@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  BiCoR
 //
 //  Created by Markus Hinkelmann on 09.01.14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MainViewController : UITableViewController
+
+@property NSMutableArray *model;
 
 @end
