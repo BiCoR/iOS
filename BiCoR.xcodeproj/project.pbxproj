@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CB9C1882CF49003A7A44 /* ServerConnection.m */; };
 		9B6AD554187F083900195217 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AD553187F083900195217 /* MainViewController.m */; };
 		9B8967E31880259B00520BE6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8967E21880259B00520BE6 /* Contact.m */; };
 		9B8AB514187EE39A0090757F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB513187EE39A0090757F /* Foundation.framework */; };
@@ -23,6 +24,7 @@
 		9B8AB538187EE39B0090757F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB517187EE39A0090757F /* UIKit.framework */; };
 		9B8AB540187EE39B0090757F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AB53E187EE39B0090757F /* InfoPlist.strings */; };
 		9B8AB542187EE39B0090757F /* BiCoRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB541187EE39B0090757F /* BiCoRTests.m */; };
+		9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFDB171884838C00D56426 /* XMLDataParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B60CB9B1882CF49003A7A44 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConnection.h; path = "Server Communication/ServerConnection.h"; sourceTree = "<group>"; };
+		9B60CB9C1882CF49003A7A44 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConnection.m; path = "Server Communication/ServerConnection.m"; sourceTree = "<group>"; };
 		9B6AD552187F083900195217 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		9B6AD553187F083900195217 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		9B8967E11880259B00520BE6 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 		9B8AB53D187EE39B0090757F /* BiCoRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRTests-Info.plist"; sourceTree = "<group>"; };
 		9B8AB53F187EE39B0090757F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8AB541187EE39B0090757F /* BiCoRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiCoRTests.m; sourceTree = "<group>"; };
+		9BBFDB161884838C00D56426 /* XMLDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParser.h; path = "Server Communication/XMLDataParser.h"; sourceTree = "<group>"; };
+		9BBFDB171884838C00D56426 /* XMLDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParser.m; path = "Server Communication/XMLDataParser.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B60CB9A1882CB00003A7A44 /* Server Communication */ = {
+			isa = PBXGroup;
+			children = (
+				9B60CB9B1882CF49003A7A44 /* ServerConnection.h */,
+				9B60CB9C1882CF49003A7A44 /* ServerConnection.m */,
+				9BBFDB161884838C00D56426 /* XMLDataParser.h */,
+				9BBFDB171884838C00D56426 /* XMLDataParser.m */,
+			);
+			name = "Server Communication";
+			sourceTree = "<group>";
+		};
 		9B8967E01880254A00520BE6 /* dataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +143,7 @@
 		9B8AB519187EE39A0090757F /* BiCoR */ = {
 			isa = PBXGroup;
 			children = (
+				9B60CB9A1882CB00003A7A44 /* Server Communication */,
 				9B8967E01880254A00520BE6 /* dataModel */,
 				9B8AB522187EE39B0090757F /* AppDelegate.h */,
 				9B8AB523187EE39B0090757F /* AppDelegate.m */,
@@ -291,8 +309,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B8967E31880259B00520BE6 /* Contact.m in Sources */,
+				9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */,
 				9B8AB524187EE39B0090757F /* AppDelegate.m in Sources */,
 				9B8AB520187EE39A0090757F /* main.m in Sources */,
+				9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */,
 				9B6AD554187F083900195217 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

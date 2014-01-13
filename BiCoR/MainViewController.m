@@ -17,6 +17,8 @@
 - (void)awakeFromNib
 {
      _model = [NSMutableArray arrayWithObjects:@"Max Mustermann", @"Maxi Musterfrau", nil];
+    ServerConnection *connection = [ServerConnection sharedServerConnection];
+    [connection readData];
 }
 
 /**

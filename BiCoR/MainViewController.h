@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerConnection.h"
 
 @interface MainViewController : UITableViewController
 

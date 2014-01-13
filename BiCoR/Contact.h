@@ -23,6 +23,7 @@
 
 //Functions
 
+
 /**
  Function the generate the age of the user
  @return: the age as an integer value
