@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CB9C1882CF49003A7A44 /* ServerConnection.m */; };
 		9B6AD554187F083900195217 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AD553187F083900195217 /* MainViewController.m */; };
+		9B79EA33189317BC00A372B7 /* XMLDataParserPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */; };
 		9B8967E31880259B00520BE6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8967E21880259B00520BE6 /* Contact.m */; };
 		9B8AB514187EE39A0090757F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB513187EE39A0090757F /* Foundation.framework */; };
 		9B8AB516187EE39A0090757F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB515187EE39A0090757F /* CoreGraphics.framework */; };
@@ -24,6 +25,7 @@
 		9B8AB538187EE39B0090757F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB517187EE39A0090757F /* UIKit.framework */; };
 		9B8AB540187EE39B0090757F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AB53E187EE39B0090757F /* InfoPlist.strings */; };
 		9B8AB542187EE39B0090757F /* BiCoRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB541187EE39B0090757F /* BiCoRTests.m */; };
+		9B9FEBE21893FC5C0074B125 /* XMLDataParserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */; };
 		9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFDB171884838C00D56426 /* XMLDataParser.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,8 @@
 		9B60CB9C1882CF49003A7A44 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConnection.m; path = "Server Communication/ServerConnection.m"; sourceTree = "<group>"; };
 		9B6AD552187F083900195217 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		9B6AD553187F083900195217 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		9B79EA31189317BC00A372B7 /* XMLDataParserPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParserPeople.h; path = "Server Communication/XMLDataParserPeople.h"; sourceTree = "<group>"; };
+		9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParserPeople.m; path = "Server Communication/XMLDataParserPeople.m"; sourceTree = "<group>"; };
 		9B8967E11880259B00520BE6 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		9B8967E21880259B00520BE6 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		9B8AB510187EE39A0090757F /* BiCoR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiCoR.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,8 @@
 		9B8AB53D187EE39B0090757F /* BiCoRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRTests-Info.plist"; sourceTree = "<group>"; };
 		9B8AB53F187EE39B0090757F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8AB541187EE39B0090757F /* BiCoRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiCoRTests.m; sourceTree = "<group>"; };
+		9B9FEBE01893FC5C0074B125 /* XMLDataParserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParserLogin.h; path = "Server Communication/XMLDataParserLogin.h"; sourceTree = "<group>"; };
+		9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParserLogin.m; path = "Server Communication/XMLDataParserLogin.m"; sourceTree = "<group>"; };
 		9BBFDB161884838C00D56426 /* XMLDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParser.h; path = "Server Communication/XMLDataParser.h"; sourceTree = "<group>"; };
 		9BBFDB171884838C00D56426 /* XMLDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParser.m; path = "Server Communication/XMLDataParser.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,10 +101,22 @@
 			children = (
 				9B60CB9B1882CF49003A7A44 /* ServerConnection.h */,
 				9B60CB9C1882CF49003A7A44 /* ServerConnection.m */,
-				9BBFDB161884838C00D56426 /* XMLDataParser.h */,
-				9BBFDB171884838C00D56426 /* XMLDataParser.m */,
+				9B79EA301893178100A372B7 /* XMLParser */,
 			);
 			name = "Server Communication";
+			sourceTree = "<group>";
+		};
+		9B79EA301893178100A372B7 /* XMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				9BBFDB161884838C00D56426 /* XMLDataParser.h */,
+				9BBFDB171884838C00D56426 /* XMLDataParser.m */,
+				9B79EA31189317BC00A372B7 /* XMLDataParserPeople.h */,
+				9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */,
+				9B9FEBE01893FC5C0074B125 /* XMLDataParserLogin.h */,
+				9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */,
+			);
+			name = XMLParser;
 			sourceTree = "<group>";
 		};
 		9B8967E01880254A00520BE6 /* dataModel */ = {
@@ -308,12 +326,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B9FEBE21893FC5C0074B125 /* XMLDataParserLogin.m in Sources */,
 				9B8967E31880259B00520BE6 /* Contact.m in Sources */,
 				9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */,
 				9B8AB524187EE39B0090757F /* AppDelegate.m in Sources */,
 				9B8AB520187EE39A0090757F /* main.m in Sources */,
 				9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */,
 				9B6AD554187F083900195217 /* MainViewController.m in Sources */,
+				9B79EA33189317BC00A372B7 /* XMLDataParserPeople.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,14 @@
 
 #import "ServerConnection.h"
 
+//CONSTANTS
+NSString * const SERVER_CONNECTION_LOGIN_PAGE = @"/login.xml";
+NSString *const SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO = @"/signin";
+NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE = @"/people.xml";
+NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER = @"x-csrf-token";
+NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%@\"&user[email]=%@&user[password]=%@";
+
+
 @implementation ServerConnection
 
 /**
@@ -18,8 +26,8 @@
     self = [super init];
     if (self)
     {
-        _url = @"http://localhost:8080/people.xml"; //TODO: Get URL from properties
-        _xmlDataParser = [[XMLDataParser alloc] init];
+        _url = @"http://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
+        _logedIn = NO;
     }
     
     return self;
@@ -43,63 +51,104 @@
     return sharedConnection;
 }
 
+
 /**
- Function to read the peopleData from the Server
+ Function to perform the login process on the server
+ @param username: The username
+ @type username: NSString*
+ @param password: The password
+ @type password: NSString*
  @return: YES if successfull, else NO
  */
--(bool)readData
+- (bool)performLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
 {
-    //Setting the variables
-    bool errorOccoured = NO;
+    //define variables
+    NSData *returnedData;
     
-    //Get the Request
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:_url]];
+    //get variables
+    _userName = username;
+    _password = password;
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    //Definie used Variables
+    NSURLResponse *response;
+    NSError *error;
     
-    _receivedData = [[NSMutableData alloc] init];
-    if (!connection) {
-        NSLog(@"Connection error");
-       errorOccoured = YES;
-        _receivedData = nil;
+    //Generate the Request - Connection to login.xml
+    ////////////////////////////////////////////////
+    NSString *loginUrl = [_url stringByAppendingString:SERVER_CONNECTION_LOGIN_PAGE];
+    
+    NSMutableURLRequest *requestLogin = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:loginUrl]];
+    
+    returnedData = [NSURLConnection sendSynchronousRequest:requestLogin returningResponse:&response error:&error];
+    
+    if (!returnedData) {
+        NSLog(@"Connection error"); //TODO: Handle Error
+        return NO;
     }
     
-    return errorOccoured;
-}
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:returnedData];
+    XMLDataParserLogin *loginParser = [[XMLDataParserLogin alloc] init];
+    parser.delegate = loginParser;
+    
+    if (![parser parse])
+    {
+        NSLog(@"Parse Error"); //TODO: Handle Error
+        return NO;
+    }
+    
+    _authentificationToken = [[loginParser.dataArray objectAtIndex:0] objectForKey:XML_DATA_PARSER_LOGIN_AUTHENTICITY_TOKEN];
+    
+    //Generate the Request - Connection to signin
+    /////////////////////////////////////////////
+    NSString *signInUrl = [_url stringByAppendingString:SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO];
+    
+    NSMutableURLRequest *requestSignIn = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:signInUrl]];
+    
+    [requestSignIn addValue:_authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
+    
+    [requestSignIn setHTTPBody:[[NSString stringWithFormat:SERVER_CONNECTION_AUTHENTICATION_BODY, _authentificationToken, _userName, _password] dataUsingEncoding:NSUTF8StringEncoding]];
+    [requestSignIn setHTTPMethod:@"POST"];
+    
+    returnedData = [NSURLConnection sendSynchronousRequest:requestSignIn returningResponse:&response error:&error];
+    
+    if (!returnedData) {
+        NSLog(@"Connection error %@", [error localizedDescription]); //TODO: Handle Error
+        return NO;
+    }
+    
+    NSMutableString *newToken = [[NSMutableString alloc] initWithData:returnedData encoding:NSUTF8StringEncoding];
+    
+    //Check if the login was successfull
+    ////////////////////////////////////
+    if ([response.URL.path isEqualToString:SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO]) {
+        NSLog(@"Login error"); //TODO: Handle error
+        
+        return NO;
+    }
+    
+    
+    //Parse the result to get the new session token
+    ///////////////////////////////////////////////
+    
+    NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:@"<meta content=\".+\" name=\"csrf-token\" />" options:0 error:&error];
+    
+    NSRange rangePosition = [regEx rangeOfFirstMatchInString:newToken options:0 range:NSMakeRange(0, newToken.length)];
+    
+    [newToken deleteCharactersInRange:NSMakeRange(rangePosition.length + rangePosition.location, newToken.length - (rangePosition.length + rangePosition.location))];
+    [newToken deleteCharactersInRange:NSMakeRange(0, rangePosition.location)];
+    
+    [newToken deleteCharactersInRange:NSMakeRange(0, [newToken rangeOfString:@"\""].location+1)];
 
-
-//////////////////////////////////////////////
-//Delegate Methods for the NSURL Connection//
-////////////////////////////////////////////
-
-/**
- Function called, when the connection recive an results
- */
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    [_receivedData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"Error: %@", [error localizedDescription]);
-}
-
-/**
- Called when the Connection will recive data
- */
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    [_receivedData appendData:data];
-}
-
-/**
- Function called when the loading of the data is finished
- */
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSString *result = [[NSString alloc] initWithData:_receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@", result);
+    _authentificationToken = [newToken substringToIndex:[newToken rangeOfString:@"\""].location];
+    
+    
+    //Parse additional informations to get the url
+    //////////////////////////////////////////////
+    _userPartOfUrl = [response.URL.path substringToIndex:response.URL.path.length - 7];
+    _logedIn = YES;
+    
+    
+    return YES;
 }
 
 

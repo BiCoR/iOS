@@ -10,12 +10,13 @@
 
 @interface XMLDataParser : NSObject <NSXMLParserDelegate>
 
+///////////////
+//Properties//
+/////////////
+@property NSMutableArray *dataArray;
+@property NSString *currentElement;
+@property NSMutableString *savedCharecters;
+@property NSError *error;
 
-/**
- Function the parse the peopleXML File
- @param: the xml file as NSData *
- @return: An array with Contact objects
- */
-- (NSMutableArray *) parsePeopleXMLFile: (NSData *) data;
 
 @end

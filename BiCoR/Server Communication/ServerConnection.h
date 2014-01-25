@@ -7,15 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XMLDataParser.h"
+#import "XMLDataParserPeople.h"
+#import "XMLDataParserLogin.h"
 
-@interface ServerConnection : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
+//Constants
+extern NSString *const SERVER_CONNECTION_LOGIN_PAGE;
+extern NSString *const SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO;
+extern NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER;
+extern NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY;
+extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 
+
+@interface ServerConnection : NSObject
+
+//Properties
 @property NSString *url;
 @property NSError *lastError;
-@property NSMutableData *receivedData;
-@property XMLDataParser *xmlDataParser;
 @property NSString *authentificationToken;
+@property NSString *userName;
+@property NSString *password;
+@property NSString *userPartOfUrl;
+@property bool logedIn;
 
 /**
  Singleton function
@@ -23,10 +35,15 @@
  */
 + (id)sharedServerConnection;
 
+
 /**
- Function to read the peopleData from the Server
+ Function to perform the login process on the server
+ @param username: The username
+ @type username: NSString*
+ @param password: The password
+ @type password: NSString*
  @return: YES if successfull, else NO
  */
-- (bool)readData;
+- (bool)performLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
 
 @end
