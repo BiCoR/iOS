@@ -46,4 +46,10 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
  */
 - (bool)performLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
 
+/**
+ Function to load or reload all contact entrys
+ @return: YES if successfull, else NO
+ */
+- (bool)loadPeopleData;
+
 @end

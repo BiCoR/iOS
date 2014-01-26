@@ -18,7 +18,8 @@
 {
      _model = [NSMutableArray arrayWithObjects:@"Max Mustermann", @"Maxi Musterfrau", nil];
     ServerConnection *connection = [ServerConnection sharedServerConnection];
-    [connection performLoginProcessWithUsername:@"markus@mhinkelmann.de" AndPassword:@"123456+"];
+    [connection performLoginProcessWithUsername:@"markus@mhinkelmann.de" AndPassword:@"123456"];
+    [connection loadPeopleData];
 }
 
 /**

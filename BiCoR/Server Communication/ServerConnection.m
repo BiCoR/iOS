@@ -64,14 +64,13 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
 {
     //define variables
     NSData *returnedData;
+    NSURLResponse *response;
+    NSError *error;
     
     //get variables
     _userName = username;
     _password = password;
-    
-    //Definie used Variables
-    NSURLResponse *response;
-    NSError *error;
+
     
     //Generate the Request - Connection to login.xml
     ////////////////////////////////////////////////
@@ -150,6 +149,62 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     return YES;
 }
+
+/**
+ Function to load or reload all contact entrys
+ @return: YES if successfull, else NO
+ */
+-(bool)loadPeopleData
+{
+    //define variables
+    NSData *returnedData;
+    NSURLResponse *response;
+    NSError *error;
+    
+    
+    if (!_logedIn)
+    {
+        [self performLoginProcessWithUsername:_userName AndPassword:_password];
+    }
+    
+    NSString *dataUrl = [_url stringByAppendingString:[_userPartOfUrl stringByAppendingString:SERVER_CONNECTION_ALL_PEOPLE_PAGE]];
+    
+    NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:dataUrl]];
+    
+    [requestData addValue:_authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
+    
+    returnedData = [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&error];
+    
+    //Check if errror appears
+    if (!returnedData) {
+        NSLog(@"Connection error %@", [error localizedDescription]); //TODO: Handle Error
+        return NO;
+    }
+    
+    //Check if login failed
+    NSLog(@"%@", response.URL.absoluteString);
+    if(![dataUrl isEqualToString:response.URL.absoluteString])
+    {
+        NSLog(@"Login no longer valid"); //TODO: Handle Error
+        _logedIn = NO;
+        return NO;
+    }
+    
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:returnedData];
+    XMLDataParserPeople *peopleParser = [[XMLDataParserPeople alloc] init];
+    parser.delegate = peopleParser;
+    
+    if (![parser parse])
+    {
+        NSLog(@"Parse Error"); //TODO: Handle Error
+        return NO;
+    }
+
+    
+    
+    return YES;
+}
+
 
 
 

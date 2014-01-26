@@ -13,7 +13,7 @@
 ///////////////
 //Properties//
 /////////////
-@property NSMutableArray *dataArray;
+@property (copy) NSMutableArray *dataArray;
 @property NSString *currentElement;
 @property NSMutableString *savedCharecters;
 @property NSError *error;

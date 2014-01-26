@@ -15,11 +15,12 @@
 
 @property NSString *firstName;
 @property NSString *lastName;
-@property NSData *birthDate;
+@property NSDate *birthDate;
 @property NSString *mail;
 @property NSString *phoneLandline;
 @property NSString *phoneMobile;
 @property UIImage *picture;
+@property int ID;
 
 //Functions
 
