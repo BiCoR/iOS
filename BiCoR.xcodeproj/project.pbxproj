@@ -70,6 +70,9 @@
 		9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParserLogin.m; path = "Server Communication/XMLDataParserLogin.m"; sourceTree = "<group>"; };
 		9BBFDB161884838C00D56426 /* XMLDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParser.h; path = "Server Communication/XMLDataParser.h"; sourceTree = "<group>"; };
 		9BBFDB171884838C00D56426 /* XMLDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParser.m; path = "Server Communication/XMLDataParser.m"; sourceTree = "<group>"; };
+		9BC9E4511896F2F7009FB195 /* ServerConnectionInformation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ServerConnectionInformation.h; path = "Server Communication/ServerConnectionInformation.h"; sourceTree = "<group>"; };
+		9BE8B2781897A48B0017FC65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		9BE8B2791897A4BF0017FC65 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,7 @@
 				9B60CB9B1882CF49003A7A44 /* ServerConnection.h */,
 				9B60CB9C1882CF49003A7A44 /* ServerConnection.m */,
 				9B79EA301893178100A372B7 /* XMLParser */,
+				9BC9E4511896F2F7009FB195 /* ServerConnectionInformation.h */,
 			);
 			name = "Server Communication";
 			sourceTree = "<group>";
@@ -135,6 +139,7 @@
 				9B8AB53B187EE39B0090757F /* BiCoRTests */,
 				9B8AB512187EE39A0090757F /* Frameworks */,
 				9B8AB511187EE39A0090757F /* Products */,
+				9BE8B2761897A4170017FC65 /* Additional Information */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,6 +231,15 @@
 				9B8AB528187EE39B0090757F /* Main_iPad.storyboard */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		9BE8B2761897A4170017FC65 /* Additional Information */ = {
+			isa = PBXGroup;
+			children = (
+				9BE8B2791897A4BF0017FC65 /* LICENSE */,
+				9BE8B2781897A48B0017FC65 /* README.md */,
+			);
+			name = "Additional Information";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
