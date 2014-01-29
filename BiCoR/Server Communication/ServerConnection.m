@@ -182,7 +182,6 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     }
     
     //Check if login failed
-    NSLog(@"%@", response.URL.absoluteString);
     if(![dataUrl isEqualToString:response.URL.absoluteString])
     {
         NSLog(@"Login no longer valid"); //TODO: Handle Error
