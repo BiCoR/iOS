@@ -28,6 +28,8 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 @property NSString *password;
 @property NSString *userPartOfUrl;
 @property bool logedIn;
+@property id delegate;
+@property NSLock *lockingClass;
 
 /**
  Singleton function
@@ -47,9 +49,33 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 - (bool)performLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
 
 /**
+ Function to perform the login process on the server in the background
+ @param username: The username
+ @type username: NSString*
+ @param password: The password
+ @type password: NSString*
+ @return: YES if successfull, else NO
+ */
+- (bool)performBackgroundLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
+
+/**
+ Function to perform the login process on the server in the background
+ @param dataArray: The Array with the following content: [0]: username, [1]: password
+ @type dataArray: NSArray*
+ @return: YES if successfull, else NO
+ */
+- (bool)performLoginProcessWithDataArray: (NSArray *)dataArray;
+
+/**
  Function to load or reload all contact entrys
  @return: YES if successfull, else NO
  */
 - (bool)loadPeopleData;
+
+/**
+ Function to load or reload all contact entrys in the background
+ @return: YES if successfull, else NO
+ */
+- (bool)loadPeopleDataBackground;
 
 @end

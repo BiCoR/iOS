@@ -15,7 +15,6 @@ NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE = @"/people.xml";
 NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER = @"x-csrf-token";
 NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%@\"&user[email]=%@&user[password]=%@";
 
-
 @implementation ServerConnection
 
 /**
@@ -28,6 +27,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     {
         _url = @"http://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
         _logedIn = NO;
+        _lockingClass = [[NSLock alloc] init];
     }
     
     return self;
@@ -52,24 +52,29 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
 }
 
 
+
+
+
 /**
- Function to perform the login process on the server
- @param username: The username
- @type username: NSString*
- @param password: The password
- @type password: NSString*
+ Function to perform the login process on the server in the background
+ @param dataArray: The Array with the following content: [0]: username, [1]: password
+ @type dataArray: NSArray*
  @return: YES if successfull, else NO
  */
-- (bool)performLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
+- (bool)performLoginProcessWithDataArray:(NSArray *)dataArray
 {
+    
     //define variables
     NSData *returnedData;
     NSURLResponse *response;
     NSError *error;
     
+    //Lock the thread
+    [_lockingClass lock];
+    
     //get variables
-    _userName = username;
-    _password = password;
+    _userName = dataArray[0];
+    _password = dataArray[1];
 
     
     //Generate the Request - Connection to login.xml
@@ -82,6 +87,9 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     if (!returnedData) {
         NSLog(@"Connection error"); //TODO: Handle Error
+        
+        
+        [_lockingClass unlock];
         return NO;
     }
     
@@ -92,6 +100,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if (![parser parse])
     {
         NSLog(@"Parse Error"); //TODO: Handle Error
+        
+        [_lockingClass unlock];
         return NO;
     }
     
@@ -122,6 +132,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if ([response.URL.path isEqualToString:SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO]) {
         NSLog(@"Login error"); //TODO: Handle error
         
+        [_lockingClass unlock];
         return NO;
     }
     
@@ -146,7 +157,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     _userPartOfUrl = [response.URL.path substringToIndex:response.URL.path.length - 7];
     _logedIn = YES;
     
-    
+    [_lockingClass unlock];
     return YES;
 }
 
@@ -161,6 +172,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     NSURLResponse *response;
     NSError *error;
     
+    //Lock the script
+    [_lockingClass lock];
     
     if (!_logedIn)
     {
@@ -178,6 +191,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     //Check if errror appears
     if (!returnedData) {
         NSLog(@"Connection error %@", [error localizedDescription]); //TODO: Handle Error
+
+        [_lockingClass unlock];
         return NO;
     }
     
@@ -186,6 +201,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     {
         NSLog(@"Login no longer valid"); //TODO: Handle Error
         _logedIn = NO;
+        
+        [_lockingClass unlock];
         return NO;
     }
     
@@ -196,11 +213,13 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if (![parser parse])
     {
         NSLog(@"Parse Error"); //TODO: Handle Error
+        
+        [_lockingClass unlock];
         return NO;
     }
 
     
-    
+    [_lockingClass unlock];
     return YES;
 }
 
