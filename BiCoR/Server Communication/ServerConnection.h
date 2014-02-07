@@ -54,9 +54,8 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
  @type username: NSString*
  @param password: The password
  @type password: NSString*
- @return: YES if successfull, else NO
  */
-- (bool)performBackgroundLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
+- (void)performBackgroundLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
 
 /**
  Function to perform the login process on the server in the background
@@ -74,8 +73,7 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 
 /**
  Function to load or reload all contact entrys in the background
- @return: YES if successfull, else NO
  */
-- (bool)loadPeopleDataBackground;
+- (void)loadPeopleDataBackground;
 
 @end

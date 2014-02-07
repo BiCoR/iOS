@@ -52,6 +52,34 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
 }
 
 
+/**
+ Function to perform the login process on the server in the background
+ @param username: The username
+ @type username: NSString*
+ @param password: The password
+ @type password: NSString*
+ */
+- (void)performBackgroundLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
+{
+    NSArray *array = [[NSArray alloc] initWithObjects:username, password, nil];
+    
+    [self performSelectorInBackground:@selector(performLoginProcessWithDataArray:) withObject:array];
+}
+
+/**
+ Function to perform the login process on the server
+ @param username: The username
+ @type username: NSString*
+ @param password: The password
+ @type password: NSString*
+ @return: YES if successfull, else NO
+ */
+-(bool)performLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
+{
+    NSArray *array = [[NSArray alloc] initWithObjects:username, password, nil];
+    
+    return [self performLoginProcessWithDataArray:array];
+}
 
 
 
@@ -159,6 +187,14 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     [_lockingClass unlock];
     return YES;
+}
+
+/**
+ Function to load or reload all contact entrys in the background
+ */
+-(void)loadPeopleDataBackground
+{
+    [self performSelectorInBackground:@selector(loadPeopleData) withObject:nil];
 }
 
 /**
