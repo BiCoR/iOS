@@ -15,6 +15,11 @@ NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE = @"/people.xml";
 NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER = @"x-csrf-token";
 NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%@\"&user[email]=%@&user[password]=%@";
 
+NSString *const SERVER_CONNECTION_LOGIN_FAILED = @"SERVER_CONNECTION_LOGIN_FAILED";
+NSString *const SERVER_CONNECTION_COULD_NOT_REACH_SERVER = @"SERVER_CONNECTION_COULD_NOT_REACH_SERVER";
+NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ERROR";
+
+
 @implementation ServerConnection
 
 /**
@@ -28,6 +33,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
         _url = @"http://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
         _logedIn = NO;
         _lockingClass = [[NSLock alloc] init];
+        _loadDataSecondTry = NO;
     }
     
     return self;
@@ -114,8 +120,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     returnedData = [NSURLConnection sendSynchronousRequest:requestLogin returningResponse:&response error:&error];
     
     if (!returnedData) {
-        NSLog(@"Connection error"); //TODO: Handle Error
-        
+        NSLog(@"Connection error");
+        _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
         if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
             [[self delegate] serverConnectionCouldNotReachTheServer:self];
@@ -130,7 +136,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if (![parser parse])
     {
         NSLog(@"Parse Error");
-        
+        _lastError = SERVER_CONNECTION_UNKNOWN_ERROR;
         [_lockingClass unlock];
         if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
             [[self delegate] serverConnectionFailedWithError:self];
@@ -155,7 +161,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     if (!returnedData) {
         NSLog(@"Connection error %@", [error localizedDescription]);
-        
+        _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
         if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
             [[self delegate] serverConnectionCouldNotReachTheServer:self];
@@ -170,8 +176,9 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     ////////////////////////////////////
     if ([response.URL.path isEqualToString:SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO]) {
         NSLog(@"Login error");
-        [_lockingClass unlock];
+        _lastError = SERVER_CONNECTION_LOGIN_FAILED;
         
+        [_lockingClass unlock];
         if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
             [[self delegate] serverConnectionFailedDuringLogin:self];
         }
@@ -203,6 +210,8 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if([[self delegate] respondsToSelector:@selector(serverConnectionFinishedLoginProcess:)]) {
         [[self delegate] serverConnectionFinishedLoginProcess:self];
     }
+    
+    _lastError = nil;
     return YES;
 }
 
@@ -244,7 +253,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     //Check if errror appears
     if (!returnedData) {
         NSLog(@"Connection error %@", [error localizedDescription]);
-
+        _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
         
         if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
@@ -259,12 +268,33 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
         NSLog(@"Login no longer valid");
         _logedIn = NO;
         
-        [_lockingClass unlock];
-        
-        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-            [[self delegate] serverConnectionFailedDuringLogin:self];
+        if (_loadDataSecondTry) {
+            _lastError = SERVER_CONNECTION_LOGIN_FAILED;
+            
+            if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                [[self delegate] serverConnectionFailedDuringLogin:self];
+            }
+            
+            [_lockingClass unlock];
+            return NO;
+        } else {
+            if (![self performLoginProcessWithUsername:_userName AndPassword:_password]) {
+                _lastError = SERVER_CONNECTION_LOGIN_FAILED;
+                
+                [_lockingClass unlock];
+                
+                if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                    [[self delegate] serverConnectionFailedDuringLogin:self];
+                }
+                return NO;
+            }
+            else //Restart load data process
+            {
+                _loadDataSecondTry = YES;
+                [_lockingClass unlock];
+                return [self loadPeopleData];
+            }
         }
-        return NO;
     }
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:returnedData];
@@ -274,7 +304,7 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if (![parser parse])
     {
         NSLog(@"Parse Error");
-        
+        _lastError = SERVER_CONNECTION_UNKNOWN_ERROR;
         [_lockingClass unlock];
         
         if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
@@ -290,7 +320,19 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
         NSArray *array = [[NSArray alloc] initWithObjects:self, peopleParser.dataArray, nil];
         [[self delegate] serverConnectionFinishedDataRequest:array];
     }
+    
+    _lastError = nil;
     return YES;
+}
+
+
+/**
+ Function to get the localized Error Message
+ @return: the localized Error Message
+ */
+-(NSString *)getLocalizedErrorMessage
+{
+    return NSLocalizedString(_lastError, nil);
 }
 
 

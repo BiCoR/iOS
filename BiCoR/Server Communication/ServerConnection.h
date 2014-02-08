@@ -18,12 +18,16 @@ extern NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER;
 extern NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY;
 extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 
+extern NSString *const SERVER_CONNECTION_LOGIN_FAILED;
+extern NSString *const SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
+extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
+
 
 @interface ServerConnection : NSObject
 
 //Properties
 @property NSString *url;
-@property NSError *lastError;
+@property NSString *lastError;
 @property NSString *authentificationToken;
 @property NSString *userName;
 @property NSString *password;
@@ -31,6 +35,7 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 @property bool logedIn;
 @property id <ServerConnectionInformation> delegate;
 @property NSLock *lockingClass;
+@property bool loadDataSecondTry;
 
 /**
  Singleton function
@@ -76,5 +81,11 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
  Function to load or reload all contact entrys in the background
  */
 - (void)loadPeopleDataBackground;
+
+/**
+ Function to get the localized Error Message
+ @return: the localized Error Message
+ */
+- (NSString *)getLocalizedErrorMessage;
 
 @end
