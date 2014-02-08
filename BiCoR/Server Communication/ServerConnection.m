@@ -116,8 +116,10 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     if (!returnedData) {
         NSLog(@"Connection error"); //TODO: Handle Error
         
-        
         [_lockingClass unlock];
+        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [[self delegate] serverConnectionCouldNotReachTheServer:self];
+        }
         return NO;
     }
     
@@ -127,9 +129,12 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     if (![parser parse])
     {
-        NSLog(@"Parse Error"); //TODO: Handle Error
+        NSLog(@"Parse Error");
         
         [_lockingClass unlock];
+        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
+            [[self delegate] serverConnectionFailedWithError:self];
+        }
         return NO;
     }
     
@@ -149,7 +154,13 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     returnedData = [NSURLConnection sendSynchronousRequest:requestSignIn returningResponse:&response error:&error];
     
     if (!returnedData) {
-        NSLog(@"Connection error %@", [error localizedDescription]); //TODO: Handle Error
+        NSLog(@"Connection error %@", [error localizedDescription]);
+        
+        [_lockingClass unlock];
+        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [[self delegate] serverConnectionCouldNotReachTheServer:self];
+        }
+        
         return NO;
     }
     
@@ -158,9 +169,12 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     //Check if the login was successfull
     ////////////////////////////////////
     if ([response.URL.path isEqualToString:SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO]) {
-        NSLog(@"Login error"); //TODO: Handle error
-        
+        NSLog(@"Login error");
         [_lockingClass unlock];
+        
+        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+            [[self delegate] serverConnectionFailedDuringLogin:self];
+        }
         return NO;
     }
     
@@ -186,6 +200,9 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     _logedIn = YES;
     
     [_lockingClass unlock];
+    if([[self delegate] respondsToSelector:@selector(serverConnectionFinishedLoginProcess:)]) {
+        [[self delegate] serverConnectionFinishedLoginProcess:self];
+    }
     return YES;
 }
 
@@ -226,19 +243,27 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     //Check if errror appears
     if (!returnedData) {
-        NSLog(@"Connection error %@", [error localizedDescription]); //TODO: Handle Error
+        NSLog(@"Connection error %@", [error localizedDescription]);
 
         [_lockingClass unlock];
+        
+        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [[self delegate] serverConnectionCouldNotReachTheServer:self];
+        }
         return NO;
     }
     
     //Check if login failed
     if(![dataUrl isEqualToString:response.URL.absoluteString])
     {
-        NSLog(@"Login no longer valid"); //TODO: Handle Error
+        NSLog(@"Login no longer valid");
         _logedIn = NO;
         
         [_lockingClass unlock];
+        
+        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+            [[self delegate] serverConnectionFailedDuringLogin:self];
+        }
         return NO;
     }
     
@@ -248,14 +273,23 @@ NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%
     
     if (![parser parse])
     {
-        NSLog(@"Parse Error"); //TODO: Handle Error
+        NSLog(@"Parse Error");
         
         [_lockingClass unlock];
+        
+        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
+            [[self delegate] serverConnectionFailedWithError:self];
+        }
         return NO;
     }
 
     
     [_lockingClass unlock];
+    
+    if([[self delegate] respondsToSelector:@selector(serverConnectionFinishedDataRequest:)]) {
+        NSArray *array = [[NSArray alloc] initWithObjects:self, peopleParser.dataArray, nil];
+        [[self delegate] serverConnectionFinishedDataRequest:array];
+    }
     return YES;
 }
 

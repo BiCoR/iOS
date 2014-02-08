@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "XMLDataParserPeople.h"
 #import "XMLDataParserLogin.h"
+#import "ServerConnectionInformation.h"
 
 //Constants
 extern NSString *const SERVER_CONNECTION_LOGIN_PAGE;
@@ -28,7 +29,7 @@ extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
 @property NSString *password;
 @property NSString *userPartOfUrl;
 @property bool logedIn;
-@property id delegate;
+@property id <ServerConnectionInformation> delegate;
 @property NSLock *lockingClass;
 
 /**
