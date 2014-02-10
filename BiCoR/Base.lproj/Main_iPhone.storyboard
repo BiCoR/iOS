@@ -48,6 +48,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="BiCoR" id="id2-S1-Ppt"/>
+                    <connections>
+                        <outlet property="tableView" destination="97F-R2-xa7" id="FgC-yZ-iFq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ur1-do-puP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

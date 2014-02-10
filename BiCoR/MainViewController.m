@@ -8,19 +8,12 @@
 
 #import "MainViewController.h"
 
+//CONSTANTS
+NSString * const SETTINGS_USERNAME_KEY = @"USERNAME";
+NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
+
 @implementation MainViewController
 
-/**
- Called when view is loaded from the nib
- @param style: style of the UITableview,
- */
-- (void)awakeFromNib
-{
-     _model = [NSMutableArray arrayWithObjects:@"Max Mustermann", @"Maxi Musterfrau", nil];
-    ServerConnection *connection = [ServerConnection sharedServerConnection];
-    [connection performLoginProcessWithUsername:@"markus@mhinkelmann.de" AndPassword:@"123456"];
-    [connection loadPeopleData];
-}
 
 /**
  Callend when view is loaded
@@ -28,6 +21,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //Get username and password
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *userName = [userDefaults stringForKey:SETTINGS_USERNAME_KEY];
+    NSString *password = [userDefaults stringForKey:SETTINGS_PASSWORD_KEY];
+    
+    //Check if userName / Password allready exists
+    if ((userName == nil) || (password == nil)) {
+        UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE", @"title for login credentials") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:nil, nil];
+        dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+        [dataAlert show];
+    }
+    //If allready exists start loading data
+    else
+    {
+        
+    }
+    
+    //Load the data from the Webpage
+    _model = [NSMutableArray arrayWithObjects:@"Max Mustermann", @"Maxi Musterfrau", nil];
+    [[self tableView] reloadData];
 }
 
 /**

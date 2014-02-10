@@ -9,8 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ServerConnection.h"
 
+//Constants
+extern NSString *const SETTINGS_USERNAME_KEY;
+extern NSString *const SETTINGS_PASSWORD_KEY;
+
 @interface MainViewController : UITableViewController
 
+//Properties
 @property NSMutableArray *model;
 
 @end
