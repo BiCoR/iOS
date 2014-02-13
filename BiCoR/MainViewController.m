@@ -14,6 +14,26 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 
 @implementation MainViewController
 
+/**
+ Called when the nib file is loaded
+ */
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    _model = [[NSMutableArray alloc] init];
+    
+    //Fill the toolbar
+    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 23)];
+//    _statusLabel = [[UILabel alloc] init];
+    _statusLabel.textAlignment = NSTextAlignmentCenter;
+    _statusLabel.backgroundColor = [UIColor clearColor];
+
+    _statusLabel.text = @"Put in text here";
+    [_statusLabel sizeToFit];
+    UIBarButtonItem *toolBarTitle = [[UIBarButtonItem alloc] initWithCustomView:_statusLabel];
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:toolBarTitle, nil] animated:NO];
+}
 
 /**
  Callend when view is loaded
@@ -36,13 +56,35 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     //If allready exists start loading data
     else
     {
-        
+        [self loadDataFirstTime];
     }
-    
-    //Load the data from the Webpage
-    _model = [NSMutableArray arrayWithObjects:@"Max Mustermann", @"Maxi Musterfrau", nil];
-    [[self tableView] reloadData];
 }
+
+
+/**
+ Function to fill the table view the first time
+ */
+- (void)loadDataFirstTime
+{
+    //_statusText.title = NSLocalizedString(@"Load Data", @"String to identify the loading of data");
+    
+    //Get username and password
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *userName = [userDefaults stringForKey:SETTINGS_USERNAME_KEY];
+    NSString *password = [userDefaults stringForKey:SETTINGS_PASSWORD_KEY];
+    
+    //Start Connection
+    ServerConnection *connection = [ServerConnection sharedServerConnection];
+    connection.userName = userName;
+    connection.password = password;
+    connection.delegate = self;
+    [connection loadPeopleDataBackground];
+    
+    [[self tableView] reloadData];
+    
+    //_statusText.title = @"";
+}
+
 
 /**
  Called if the view recive a memory warning
@@ -52,6 +94,37 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+////////////////////////////////////////////////////
+// Delegates for the Username/Password alert view//
+//////////////////////////////////////////////////
+
+/**
+ Function called, when the allert view is closed
+ */
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:[alertView textFieldAtIndex:0].text forKey:SETTINGS_USERNAME_KEY];
+        [userDefaults setObject:[alertView textFieldAtIndex:1].text forKey:SETTINGS_PASSWORD_KEY];
+    }
+}
+
+/////////////////////////////////////////
+// Delegates for the Server Connection//
+///////////////////////////////////////
+
+/**
+ Called when a data request is finished
+ */
+- (void)serverConnectionFinishedDataRequest:(NSArray *)resultObjects
+{
+    for (Contact *person in resultObjects[1]) {
+        NSLog(@"%@", person.lastName);
+    }
+}
+
 
 /////////////////////////////////
 // Settings for the table view//

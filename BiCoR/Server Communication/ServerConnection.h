@@ -33,8 +33,8 @@ extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
 @property NSString *password;
 @property NSString *userPartOfUrl;
 @property bool logedIn;
-@property id <ServerConnectionInformation> delegate;
-@property NSLock *lockingClass;
+@property (weak) NSObject <ServerConnectionInformation> *delegate;
+@property NSRecursiveLock *lockingClass;
 @property bool loadDataSecondTry;
 
 /**

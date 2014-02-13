@@ -47,6 +47,7 @@
                             <outlet property="delegate" destination="Vsa-5I-4Km" id="HcF-tu-iGr"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="BiCoR" id="id2-S1-Ppt"/>
                     <connections>
                         <outlet property="tableView" destination="97F-R2-xa7" id="FgC-yZ-iFq"/>
@@ -54,7 +55,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ur1-do-puP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="41"/>
+            <point key="canvasLocation" x="385" y="41"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GRP-x5-plv">
@@ -78,10 +79,14 @@
         <!--Navigation Controller-->
         <scene sceneID="RQa-g8-LSg">
             <objects>
-                <navigationController definesPresentationContext="YES" id="FRQ-iH-Uz0" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="FRQ-iH-Uz0" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hUZ-Su-lGE">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8aX-Wd-YTa">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Vsa-5I-4Km" kind="relationship" relationship="rootViewController" id="nkX-Fp-dj2"/>
                     </connections>

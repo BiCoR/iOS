@@ -8,14 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "ServerConnection.h"
+#import "Contact.h"
 
 //Constants
 extern NSString *const SETTINGS_USERNAME_KEY;
 extern NSString *const SETTINGS_PASSWORD_KEY;
 
-@interface MainViewController : UITableViewController
+@interface MainViewController : UITableViewController <UIAlertViewDelegate, ServerConnectionInformation>
 
 //Properties
 @property NSMutableArray *model;
+@property UILabel *statusLabel;
+
+//Functions
+
+/**
+ Function to fill the table view the first time
+ */
+- (void) loadDataFirstTime;
 
 @end
