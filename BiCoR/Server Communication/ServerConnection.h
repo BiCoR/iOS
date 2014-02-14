@@ -33,7 +33,6 @@ extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
 @property NSString *password;
 @property NSString *userPartOfUrl;
 @property bool logedIn;
-@property (weak) NSObject <ServerConnectionInformation> *delegate;
 @property NSRecursiveLock *lockingClass;
 @property bool loadDataSecondTry;
 
@@ -43,44 +42,40 @@ extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
  */
 + (id)sharedServerConnection;
 
+/**
+ Function to set the username and the password
+ @param username: The username for the connection
+ @param password: The password for the connection
+ */
+- (void)setUserName:(NSString *)userName AndPassword: (NSString *) password;
 
 /**
  Function to perform the login process on the server
- @param username: The username
- @type username: NSString*
- @param password: The password
- @type password: NSString*
+ @param delegate: The delegate class
  @return: YES if successfull, else NO
  */
-- (bool)performLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
+- (bool)performLoginProcessWithDelegate:(NSObject *) delegate;
 
 /**
  Function to perform the login process on the server in the background
- @param username: The username
- @type username: NSString*
- @param password: The password
+ @param delegate: The delegate class
  @type password: NSString*
  */
-- (void)performBackgroundLoginProcessWithUsername: (NSString *)username AndPassword: (NSString *)password;
+- (void)performBackgroundLoginProcessWithDelegate:(NSObject *) delegate;
 
-/**
- Function to perform the login process on the server in the background
- @param dataArray: The Array with the following content: [0]: username, [1]: password
- @type dataArray: NSArray*
- @return: YES if successfull, else NO
- */
-- (bool)performLoginProcessWithDataArray: (NSArray *)dataArray;
 
 /**
  Function to load or reload all contact entrys
+ @param delegate: The delegate class
  @return: YES if successfull, else NO
  */
-- (bool)loadPeopleData;
+- (bool)loadPeopleDataWithDelegate:(NSObject *) delegate;
 
 /**
  Function to load or reload all contact entrys in the background
+ @param delegate: The delegate class
  */
-- (void)loadPeopleDataBackground;
+- (void)loadPeopleDataBackgroundWithDelegate: (NSObject *) delegate;
 
 /**
  Function to get the localized Error Message

@@ -75,10 +75,8 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     
     //Start Connection
     ServerConnection *connection = [ServerConnection sharedServerConnection];
-    connection.userName = userName;
-    connection.password = password;
-    connection.delegate = self;
-    [connection loadPeopleDataBackground];
+    [connection setUserName:userName AndPassword:password];
+    [connection loadPeopleDataBackgroundWithDelegate:self];
     
     [[self tableView] reloadData];
     

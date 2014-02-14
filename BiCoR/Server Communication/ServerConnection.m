@@ -60,42 +60,22 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
 
 /**
  Function to perform the login process on the server in the background
- @param username: The username
- @type username: NSString*
- @param password: The password
- @type password: NSString*
+ @param delegate: The delegate class
+ @type
  */
-- (void)performBackgroundLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
+- (void)performBackgroundLoginProcessWithDelegate:(NSObject *) delegate
 {
-    NSArray *array = [[NSArray alloc] initWithObjects:username, password, nil];
-    
-    [self performSelectorInBackground:@selector(performLoginProcessWithDataArray:) withObject:array];
+    [self performSelectorInBackground:@selector(performLoginProcessWithDelegate:) withObject:delegate];
 }
+
+
 
 /**
  Function to perform the login process on the server
- @param username: The username
- @type username: NSString*
- @param password: The password
- @type password: NSString*
+ @param delegate: The delegate class
  @return: YES if successfull, else NO
  */
--(bool)performLoginProcessWithUsername:(NSString *)username AndPassword:(NSString *)password
-{
-    NSArray *array = [[NSArray alloc] initWithObjects:username, password, nil];
-    
-    return [self performLoginProcessWithDataArray:array];
-}
-
-
-
-/**
- Function to perform the login process on the server in the background
- @param dataArray: The Array with the following content: [0]: username, [1]: password
- @type dataArray: NSArray*
- @return: YES if successfull, else NO
- */
-- (bool)performLoginProcessWithDataArray:(NSArray *)dataArray
+- (bool)performLoginProcessWithDelegate:(NSObject *) delegate
 {
     
     //define variables
@@ -105,10 +85,6 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     
     //Lock the thread
     [_lockingClass lock];
-    
-    //get variables
-    _userName = dataArray[0];
-    _password = dataArray[1];
 
     
     //Generate the Request - Connection to login.xml
@@ -123,8 +99,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         NSLog(@"Connection error");
         _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
-        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
         return NO;
     }
@@ -138,8 +114,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         NSLog(@"Parse Error");
         _lastError = SERVER_CONNECTION_UNKNOWN_ERROR;
         [_lockingClass unlock];
-        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
         }
         return NO;
     }
@@ -163,8 +139,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         NSLog(@"Connection error %@", [error localizedDescription]);
         _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
-        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
         
         return NO;
@@ -179,8 +155,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         _lastError = SERVER_CONNECTION_LOGIN_FAILED;
         
         [_lockingClass unlock];
-        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
         }
         return NO;
     }
@@ -207,8 +183,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     _logedIn = YES;
     
     [_lockingClass unlock];
-    if([[self delegate] respondsToSelector:@selector(serverConnectionFinishedLoginProcess:)]) {
-        [self.delegate performSelectorOnMainThread:@selector(serverConnectionFinishedLoginProcess:) withObject:self waitUntilDone:NO];
+    if([delegate respondsToSelector:@selector(serverConnectionFinishedLoginProcess:)]) {
+        [delegate performSelectorOnMainThread:@selector(serverConnectionFinishedLoginProcess:) withObject:self waitUntilDone:NO];
     }
     
     _lastError = nil;
@@ -217,17 +193,19 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
 
 /**
  Function to load or reload all contact entrys in the background
+ @param delegate: The delegate class
  */
--(void)loadPeopleDataBackground
+-(void)loadPeopleDataBackgroundWithDelegate: (NSObject *) delegate
 {
-    [self performSelectorInBackground:@selector(loadPeopleData) withObject:nil];
+    [self performSelectorInBackground:@selector(loadPeopleDataWithDelegate:) withObject:delegate];
 }
 
 /**
  Function to load or reload all contact entrys
+ @param delegate: The delegate class
  @return: YES if successfull, else NO
  */
--(bool)loadPeopleData
+-(bool)loadPeopleDataWithDelegate:(NSObject *) delegate;
 {
     //define variables
     NSData *returnedData;
@@ -239,11 +217,11 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     
     if (!_logedIn)
     {
-        if (![self performLoginProcessWithUsername:_userName AndPassword:_password])
+        if (![self performLoginProcessWithDelegate:nil])
         {
             [_lockingClass unlock];
-            if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-                [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
+            if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
             }
             return NO;
         }
@@ -263,8 +241,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
         [_lockingClass unlock];
         
-        if([[self delegate] respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
         return NO;
     }
@@ -278,20 +256,20 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if (_loadDataSecondTry) {
             _lastError = SERVER_CONNECTION_LOGIN_FAILED;
             
-            if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-                [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
+            if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
             }
             
             [_lockingClass unlock];
             return NO;
         } else {
-            if (![self performLoginProcessWithUsername:_userName AndPassword:_password]) {
+            if (![self performLoginProcessWithDelegate:nil]) {
                 _lastError = SERVER_CONNECTION_LOGIN_FAILED;
                 
                 [_lockingClass unlock];
                 
-                if([[self delegate] respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-                    [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
+                if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                    [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
                 }
                 return NO;
             }
@@ -299,7 +277,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
             {
                 _loadDataSecondTry = YES;
                 [_lockingClass unlock];
-                return [self loadPeopleData];
+                return [self loadPeopleDataWithDelegate:delegate];
+                //TODO: Exit Path
             }
         }
     }
@@ -314,8 +293,8 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         _lastError = SERVER_CONNECTION_UNKNOWN_ERROR;
         [_lockingClass unlock];
         
-        if([[self delegate] respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
-            [self.delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
+        if([delegate respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
+            [delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
         }
         return NO;
     }
@@ -323,9 +302,9 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     
     [_lockingClass unlock];
     
-    if([[self delegate] respondsToSelector:@selector(serverConnectionFinishedDataRequest:)]) {
+    if([delegate respondsToSelector:@selector(serverConnectionFinishedDataRequest:)]) {
         NSArray *array = [[NSArray alloc] initWithObjects:self, peopleParser.dataArray, nil];
-        [self.delegate performSelectorOnMainThread:@selector(serverConnectionFinishedDataRequest:) withObject:array waitUntilDone:NO];
+        [delegate performSelectorOnMainThread:@selector(serverConnectionFinishedDataRequest:) withObject:array waitUntilDone:NO];
     }
     
     _lastError = nil;
@@ -341,6 +320,17 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
 -(NSString *)getLocalizedErrorMessage
 {
     return NSLocalizedString(_lastError, nil);
+}
+
+/**
+ Function to set the username and the password
+ @param username: The username for the connection
+ @param password: The password for the connection
+ */
+- (void)setUserName:(NSString *)userName AndPassword:(NSString *)password
+{
+    _userName = userName;
+    _password = password;
 }
 
 
