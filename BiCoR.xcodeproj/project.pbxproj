@@ -11,6 +11,7 @@
 		9B6AD554187F083900195217 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AD553187F083900195217 /* MainViewController.m */; };
 		9B79EA33189317BC00A372B7 /* XMLDataParserPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */; };
 		9B8967E31880259B00520BE6 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8967E21880259B00520BE6 /* Contact.m */; };
+		9B89F2E518B01A0C009E4455 /* PersonDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B89F2E418B01A0C009E4455 /* PersonDetailsViewController.m */; };
 		9B8AB514187EE39A0090757F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB513187EE39A0090757F /* Foundation.framework */; };
 		9B8AB516187EE39A0090757F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB515187EE39A0090757F /* CoreGraphics.framework */; };
 		9B8AB518187EE39A0090757F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB517187EE39A0090757F /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 		9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParserPeople.m; path = "Server Communication/XMLDataParserPeople.m"; sourceTree = "<group>"; };
 		9B8967E11880259B00520BE6 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		9B8967E21880259B00520BE6 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		9B89F2E318B01A0C009E4455 /* PersonDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDetailsViewController.h; path = UI/PersonDetailsViewController.h; sourceTree = "<group>"; };
+		9B89F2E418B01A0C009E4455 /* PersonDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDetailsViewController.m; path = UI/PersonDetailsViewController.m; sourceTree = "<group>"; };
 		9B8AB510187EE39A0090757F /* BiCoR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiCoR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8AB513187EE39A0090757F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B8AB515187EE39A0090757F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +133,15 @@
 				9B8967E21880259B00520BE6 /* Contact.m */,
 			);
 			name = dataModel;
+			sourceTree = "<group>";
+		};
+		9B89F2E218B019DC009E4455 /* PersonDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				9B89F2E318B01A0C009E4455 /* PersonDetailsViewController.h */,
+				9B89F2E418B01A0C009E4455 /* PersonDetailsViewController.m */,
+			);
+			name = PersonDetailsView;
 			sourceTree = "<group>";
 		};
 		9B8AB507187EE39A0090757F = {
@@ -218,6 +230,7 @@
 		9B8AB54C187EE3AA0090757F /* iPhone */ = {
 			isa = PBXGroup;
 			children = (
+				9B89F2E218B019DC009E4455 /* PersonDetailsView */,
 				9B8AB525187EE39B0090757F /* Main_iPhone.storyboard */,
 				9B6AD552187F083900195217 /* MainViewController.h */,
 				9B6AD553187F083900195217 /* MainViewController.m */,
@@ -348,6 +361,7 @@
 				9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */,
 				9B8AB524187EE39B0090757F /* AppDelegate.m in Sources */,
 				9B8AB520187EE39A0090757F /* main.m in Sources */,
+				9B89F2E518B01A0C009E4455 /* PersonDetailsViewController.m in Sources */,
 				9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */,
 				9B6AD554187F083900195217 /* MainViewController.m in Sources */,
 				9B79EA33189317BC00A372B7 /* XMLDataParserPeople.m in Sources */,
