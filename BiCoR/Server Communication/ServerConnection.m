@@ -33,7 +33,7 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     self = [super init];
     if (self)
     {
-        _url = @"http://quiet-crag-9089.herokuapp.local"; //TODO: Get URL from properties
+        _url = @"http://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
         _logedIn = NO;
         _lockingClass = [[NSRecursiveLock alloc] init];
         _loadDataSecondTry = NO;

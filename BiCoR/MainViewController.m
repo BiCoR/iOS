@@ -33,6 +33,8 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     UIBarButtonItem *toolBarTitle = [[UIBarButtonItem alloc] initWithCustomView:_statusLabel];
     
     [self setToolbarItems:[NSArray arrayWithObjects:toolBarTitle, nil] animated:NO];
+    
+    //TODO: Handle the Text Label
 }
 
 /**
@@ -67,6 +69,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 - (void)loadDataFirstTime
 {
     //_statusText.title = NSLocalizedString(@"Load Data", @"String to identify the loading of data");
+    //TODO: Handle the Text field
     
     //Get username and password
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -77,8 +80,6 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     ServerConnection *connection = [ServerConnection sharedServerConnection];
     [connection setUserName:userName AndPassword:password];
     [connection loadPeopleDataBackgroundWithDelegate:self];
-    
-    [[self tableView] reloadData];
     
     //_statusText.title = @"";
 }
@@ -102,10 +103,11 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
+    if ((buttonIndex == 0) && (alertView.tag == 0)) {
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults setObject:[alertView textFieldAtIndex:0].text forKey:SETTINGS_USERNAME_KEY];
         [userDefaults setObject:[alertView textFieldAtIndex:1].text forKey:SETTINGS_PASSWORD_KEY];
+        [self loadDataFirstTime];
     }
 }
 
@@ -120,9 +122,43 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 {
     for (Contact *person in resultObjects[1]) {
         NSLog(@"%@", person.lastName);
+        [_model addObject:person];
+        [self.tableView reloadData];
     }
 }
 
+/**
+ Called when the server connection Fails during the login
+ */
+- (void)serverConnectionFailedDuringLogin:(ServerConnection *)serverConnectionObject
+{
+    UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE_FAILED", @"title for login credentials failed") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:nil, nil];
+    dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
+    dataAlert.tag = 0;
+    [dataAlert show];
+}
+
+/**
+ Called, when it was not possibe to reach the server
+ */
+- (void)serverConnectionCouldNotReachTheServer:(ServerConnection *)serverConnectionObject
+{
+    UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"REACH_SERVER_FAILED", @"title for reach Server failed") message:[serverConnectionObject getLocalizedErrorMessage] delegate:self cancelButtonTitle:NSLocalizedString(@"OK_BUTTON", @"ok button") otherButtonTitles:nil, nil];
+    dataAlert.alertViewStyle = UIAlertViewStyleDefault;
+    dataAlert.tag = 1;
+    [dataAlert show];
+}
+
+/**
+ Called, when the Server process failed with an unknown error
+ */
+-(void)serverConnectionFailedWithError:(ServerConnection *)serverConnectionObject
+{
+    UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"SERVER_UNKNOWN_ERROR", @"unknown error occoured") message:[serverConnectionObject getLocalizedErrorMessage] delegate:self cancelButtonTitle:NSLocalizedString(@"OK_BUTTON", @"ok button") otherButtonTitles:nil, nil];
+    dataAlert.tag = 1;
+    dataAlert.alertViewStyle = UIAlertViewStyleDefault;
+    [dataAlert show];
+}
 
 /////////////////////////////////
 // Settings for the table view//
@@ -156,7 +192,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [_model objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[_model objectAtIndex:indexPath.row] lastName];
     cell.detailTextLabel.text = @"01.01.2000";
     
     
@@ -172,6 +208,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"Prepare Segue called");
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

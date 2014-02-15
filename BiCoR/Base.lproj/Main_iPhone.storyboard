@@ -37,7 +37,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="UE2-XD-rCN" kind="push" trigger="accessoryAction" id="vdg-3k-nda"/>
+                                    <segue destination="UE2-XD-rCN" kind="push" id="fTN-eE-odn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
