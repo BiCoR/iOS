@@ -19,6 +19,9 @@ NSString *const SERVER_CONNECTION_LOGIN_FAILED = @"SERVER_CONNECTION_LOGIN_FAILE
 NSString *const SERVER_CONNECTION_COULD_NOT_REACH_SERVER = @"SERVER_CONNECTION_COULD_NOT_REACH_SERVER";
 NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ERROR";
 
+int const SERVER_CONNECTION_LOGIN_FAILED_CODE = 1;
+int const SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE = 2;
+int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
 
 @implementation ServerConnection
 
@@ -30,7 +33,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     self = [super init];
     if (self)
     {
-        _url = @"http://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
+        _url = @"http://quiet-crag-9089.herokuapp.local"; //TODO: Get URL from properties
         _logedIn = NO;
         _lockingClass = [[NSRecursiveLock alloc] init];
         _loadDataSecondTry = NO;
@@ -73,9 +76,9 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
 /**
  Function to perform the login process on the server
  @param delegate: The delegate class
- @return: YES if successfull, else NO
+ @return: An integer error code or 0 if successfull
  */
-- (bool)performLoginProcessWithDelegate:(NSObject *) delegate
+- (int)performLoginProcessWithDelegate:(NSObject *) delegate
 {
     
     //define variables
@@ -102,7 +105,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
             [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
-        return NO;
+        return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
     }
     
     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:returnedData];
@@ -117,7 +120,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if([delegate respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
             [delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
         }
-        return NO;
+        return SERVER_CONNECTION_UNKNOWN_ERROR_CODE;
     }
     
     _authentificationToken = [[loginParser.dataArray objectAtIndex:0] objectForKey:XML_DATA_PARSER_LOGIN_AUTHENTICITY_TOKEN];
@@ -143,7 +146,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
             [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
         
-        return NO;
+        return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
     }
     
     NSMutableString *newToken = [[NSMutableString alloc] initWithData:returnedData encoding:NSUTF8StringEncoding];
@@ -158,7 +161,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
             [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
         }
-        return NO;
+        return SERVER_CONNECTION_LOGIN_FAILED_CODE;
     }
     
     
@@ -188,7 +191,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     }
     
     _lastError = nil;
-    return YES;
+    return 0;
 }
 
 /**
@@ -203,9 +206,9 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
 /**
  Function to load or reload all contact entrys
  @param delegate: The delegate class
- @return: YES if successfull, else NO
+ @return: An integer error code or 0 if successfull
  */
--(bool)loadPeopleDataWithDelegate:(NSObject *) delegate;
+-(int)loadPeopleDataWithDelegate:(NSObject *) delegate;
 {
     //define variables
     NSData *returnedData;
@@ -217,13 +220,28 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     
     if (!_logedIn)
     {
-        if (![self performLoginProcessWithDelegate:nil])
-        {
-            [_lockingClass unlock];
-            if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
-                [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
-            }
-            return NO;
+        switch ([self performLoginProcessWithDelegate:nil]) {
+            case SERVER_CONNECTION_LOGIN_FAILED_CODE:
+                [_lockingClass unlock];
+                if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
+                    [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
+                }
+                return SERVER_CONNECTION_LOGIN_FAILED_CODE;
+                break;
+            case SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE:
+                [_lockingClass unlock];
+                if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+                    [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
+                }
+                return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
+                break;
+            case SERVER_CONNECTION_UNKNOWN_ERROR_CODE:
+                [_lockingClass unlock];
+                if([delegate respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
+                    [delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
+                }
+                return SERVER_CONNECTION_UNKNOWN_ERROR_CODE;
+                break;
         }
     }
     
@@ -244,7 +262,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
             [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
         }
-        return NO;
+        return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
     }
     
     //Check if login failed
@@ -261,7 +279,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
             }
             
             [_lockingClass unlock];
-            return NO;
+            return SERVER_CONNECTION_LOGIN_FAILED_CODE;
         } else {
             if (![self performLoginProcessWithDelegate:nil]) {
                 _lastError = SERVER_CONNECTION_LOGIN_FAILED;
@@ -271,14 +289,13 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
                 if([delegate respondsToSelector:@selector(serverConnectionFailedDuringLogin:)]) {
                     [delegate performSelectorOnMainThread:@selector(serverConnectionFailedDuringLogin:) withObject:self waitUntilDone:NO];
                 }
-                return NO;
+                return SERVER_CONNECTION_LOGIN_FAILED_CODE;
             }
             else //Restart load data process
             {
                 _loadDataSecondTry = YES;
                 [_lockingClass unlock];
                 return [self loadPeopleDataWithDelegate:delegate];
-                //TODO: Exit Path
             }
         }
     }
@@ -296,7 +313,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
         if([delegate respondsToSelector:@selector(serverConnectionFailedWithError:)]) {
             [delegate performSelectorOnMainThread:@selector(serverConnectionFailedWithError:) withObject:self waitUntilDone:NO];
         }
-        return NO;
+        return SERVER_CONNECTION_UNKNOWN_ERROR_CODE;
     }
 
     
@@ -308,8 +325,7 @@ NSString *const SERVER_CONNECTION_UNKNOWN_ERROR = @"SERVER_CONNECTION_UNKNOWN_ER
     }
     
     _lastError = nil;
-    //TODO: Handel Memory managment
-    return YES;
+    return 0;
 }
 
 

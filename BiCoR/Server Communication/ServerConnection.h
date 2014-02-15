@@ -22,6 +22,10 @@ extern NSString *const SERVER_CONNECTION_LOGIN_FAILED;
 extern NSString *const SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
 extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
 
+extern int const SERVER_CONNECTION_LOGIN_FAILED_CODE;
+extern int const SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
+extern int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE;
+
 
 @interface ServerConnection : NSObject
 
@@ -52,9 +56,9 @@ extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
 /**
  Function to perform the login process on the server
  @param delegate: The delegate class
- @return: YES if successfull, else NO
+ @return: An integer error code or 0 if successfull
  */
-- (bool)performLoginProcessWithDelegate:(NSObject *) delegate;
+- (int)performLoginProcessWithDelegate:(NSObject *) delegate;
 
 /**
  Function to perform the login process on the server in the background
@@ -67,9 +71,9 @@ extern NSString *const SERVER_CONNECTION_UNKNOWN_ERROR;
 /**
  Function to load or reload all contact entrys
  @param delegate: The delegate class
- @return: YES if successfull, else NO
+ @return: An integer error code or 0 if successfull
  */
-- (bool)loadPeopleDataWithDelegate:(NSObject *) delegate;
+- (int)loadPeopleDataWithDelegate:(NSObject *) delegate;
 
 /**
  Function to load or reload all contact entrys in the background
