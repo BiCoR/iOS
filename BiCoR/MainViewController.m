@@ -208,9 +208,9 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"Prepare Segue called");
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    PersonDetailsViewController *newController = [segue destinationViewController];
+    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+    [newController setContactData:[_model objectAtIndex:path.row]];
 }
 
 @end

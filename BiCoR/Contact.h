@@ -31,4 +31,10 @@
  */
 - (int) ageOfUser;
 
+/**
+ Function to get the first and the last name as one String
+ @return: FIRSTNAME LASTNAME as String
+ */
+- (NSString *) getFullName;
+
 @end

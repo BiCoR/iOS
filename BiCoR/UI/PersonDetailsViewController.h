@@ -13,6 +13,10 @@
 
 @interface PersonDetailsViewController : UITableViewController
 
-@property Contact *contactData;
+//Properties
+@property Contact* contactData;
+@property int numberOfRows;
+
+//Functions
 
 @end

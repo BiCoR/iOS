@@ -10,13 +10,14 @@
 
 @implementation PersonDetailsViewController
 
+@synthesize contactData = _contactData;
+
 /**
  Function called, when the UI is loaded from the Storyboard file
  */
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    NSLog(@"Awake from Nib");
 }
 
 /**
@@ -25,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"ViewDidLoad");
 }
 
 /**
@@ -37,6 +37,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+/**
+ Function to set the Contact Data
+ Analyse the entered data and prepars the table
+ */
+- (void)setContactData:(Contact *)contactData
+{
+    _contactData = contactData;
+    int counter = 1;
+    if (_contactData.birthDate != nil)
+        counter++;
+    else if (_contactData.phoneLandline != nil)
+        counter++;
+    else if (_contactData.phoneMobile != nil)
+        counter++;
+    else if (_contactData.mail != nil)
+        counter++;
+    _numberOfRows = counter;
+}
+
+/**
+ Function to return the contact data
+ */
+- (Contact *)contactData
+{
+    return _contactData;
+}
 
 
 /////////////////////////////////
@@ -48,8 +74,6 @@
  */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
@@ -59,9 +83,7 @@
  */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 1;
+    return _numberOfRows;
 }
 
 
@@ -87,7 +109,7 @@
 {
     HeaderCell* headerCell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
     
-    headerCell.textLabel.text = @"Max Mustermann";
+    headerCell.textLabel.text = _contactData.getFullName;
     
     return headerCell;
 }

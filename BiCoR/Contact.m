@@ -19,4 +19,13 @@
     return 0; //TODO: Add function
 }
 
+/**
+ Function to get the first and the last name as one String
+ @return: FIRSTNAME LASTNAME as String
+ */
+- (NSString *)getFullName
+{
+    return [NSString stringWithFormat:@"%@ %@", _firstName, _lastName];
+}
+
 @end

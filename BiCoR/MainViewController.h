@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ServerConnection.h"
 #import "Contact.h"
+#import "PersonDetailsViewController.h"
 
 //Constants
 extern NSString *const SETTINGS_USERNAME_KEY;
