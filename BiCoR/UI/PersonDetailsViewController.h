@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Contact.h"
+#import "HeaderCell.h"
+#import "DataCell.h"
 
 @interface PersonDetailsViewController : UITableViewController
+
+@property Contact *contactData;
 
 @end

@@ -26,6 +26,10 @@
 		9B8AB538187EE39B0090757F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8AB517187EE39A0090757F /* UIKit.framework */; };
 		9B8AB540187EE39B0090757F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B8AB53E187EE39B0090757F /* InfoPlist.strings */; };
 		9B8AB542187EE39B0090757F /* BiCoRTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8AB541187EE39B0090757F /* BiCoRTests.m */; };
+		9B9A587518B0DABE008498F6 /* DataCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A587418B0DABE008498F6 /* DataCell.m */; };
+		9B9A587818B0DB92008498F6 /* HeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A587718B0DB92008498F6 /* HeaderCell.m */; };
+		9B9A587B18B103B1008498F6 /* DataCellPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A587A18B103B1008498F6 /* DataCellPhone.m */; };
+		9B9A587E18B103C2008498F6 /* DataCellMail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A587D18B103C2008498F6 /* DataCellMail.m */; };
 		9B9FEBE21893FC5C0074B125 /* XMLDataParserLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */; };
 		9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BBFDB171884838C00D56426 /* XMLDataParser.m */; };
 /* End PBXBuildFile section */
@@ -69,6 +73,14 @@
 		9B8AB53D187EE39B0090757F /* BiCoRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRTests-Info.plist"; sourceTree = "<group>"; };
 		9B8AB53F187EE39B0090757F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8AB541187EE39B0090757F /* BiCoRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiCoRTests.m; sourceTree = "<group>"; };
+		9B9A587318B0DABE008498F6 /* DataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCell.h; path = UI/TableCells/DataCell.h; sourceTree = "<group>"; };
+		9B9A587418B0DABE008498F6 /* DataCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCell.m; path = UI/TableCells/DataCell.m; sourceTree = "<group>"; };
+		9B9A587618B0DB92008498F6 /* HeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeaderCell.h; path = UI/TableCells/HeaderCell.h; sourceTree = "<group>"; };
+		9B9A587718B0DB92008498F6 /* HeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeaderCell.m; path = UI/TableCells/HeaderCell.m; sourceTree = "<group>"; };
+		9B9A587918B103B1008498F6 /* DataCellPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCellPhone.h; path = UI/TableCells/DataCellPhone.h; sourceTree = "<group>"; };
+		9B9A587A18B103B1008498F6 /* DataCellPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCellPhone.m; path = UI/TableCells/DataCellPhone.m; sourceTree = "<group>"; };
+		9B9A587C18B103C2008498F6 /* DataCellMail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCellMail.h; path = UI/TableCells/DataCellMail.h; sourceTree = "<group>"; };
+		9B9A587D18B103C2008498F6 /* DataCellMail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCellMail.m; path = UI/TableCells/DataCellMail.m; sourceTree = "<group>"; };
 		9B9FEBE01893FC5C0074B125 /* XMLDataParserLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParserLogin.h; path = "Server Communication/XMLDataParserLogin.h"; sourceTree = "<group>"; };
 		9B9FEBE11893FC5C0074B125 /* XMLDataParserLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMLDataParserLogin.m; path = "Server Communication/XMLDataParserLogin.m"; sourceTree = "<group>"; };
 		9BBFDB161884838C00D56426 /* XMLDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMLDataParser.h; path = "Server Communication/XMLDataParser.h"; sourceTree = "<group>"; };
@@ -138,6 +150,7 @@
 		9B89F2E218B019DC009E4455 /* PersonDetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				9B9A586F18B0CDDD008498F6 /* TableCells */,
 				9B89F2E318B01A0C009E4455 /* PersonDetailsViewController.h */,
 				9B89F2E418B01A0C009E4455 /* PersonDetailsViewController.m */,
 			);
@@ -244,6 +257,21 @@
 				9B8AB528187EE39B0090757F /* Main_iPad.storyboard */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		9B9A586F18B0CDDD008498F6 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				9B9A587318B0DABE008498F6 /* DataCell.h */,
+				9B9A587418B0DABE008498F6 /* DataCell.m */,
+				9B9A587618B0DB92008498F6 /* HeaderCell.h */,
+				9B9A587718B0DB92008498F6 /* HeaderCell.m */,
+				9B9A587918B103B1008498F6 /* DataCellPhone.h */,
+				9B9A587A18B103B1008498F6 /* DataCellPhone.m */,
+				9B9A587C18B103C2008498F6 /* DataCellMail.h */,
+				9B9A587D18B103C2008498F6 /* DataCellMail.m */,
+			);
+			name = TableCells;
 			sourceTree = "<group>";
 		};
 		9BE8B2761897A4170017FC65 /* Additional Information */ = {
@@ -358,8 +386,12 @@
 			files = (
 				9B9FEBE21893FC5C0074B125 /* XMLDataParserLogin.m in Sources */,
 				9B8967E31880259B00520BE6 /* Contact.m in Sources */,
+				9B9A587518B0DABE008498F6 /* DataCell.m in Sources */,
 				9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */,
 				9B8AB524187EE39B0090757F /* AppDelegate.m in Sources */,
+				9B9A587818B0DB92008498F6 /* HeaderCell.m in Sources */,
+				9B9A587B18B103B1008498F6 /* DataCellPhone.m in Sources */,
+				9B9A587E18B103C2008498F6 /* DataCellMail.m in Sources */,
 				9B8AB520187EE39A0090757F /* main.m in Sources */,
 				9B89F2E518B01A0C009E4455 /* PersonDetailsViewController.m in Sources */,
 				9BBFDB181884838C00D56426 /* XMLDataParser.m in Sources */,
