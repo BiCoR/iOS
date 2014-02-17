@@ -18,6 +18,10 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    _birthdayID = -1;
+    _mailID = -1;
+    _landlinePhoneID = -1;
+    _mobilePhoneID = -1;
 }
 
 /**
@@ -45,14 +49,23 @@
 {
     _contactData = contactData;
     int counter = 1;
-    if (_contactData.birthDate != nil)
+    _birthdayID = 0;
+    if (![_contactData.mail isEqualToString:@""])
+    {
+        _mailID = counter;
         counter++;
-    else if (_contactData.phoneLandline != nil)
+    }
+    if (![_contactData.phoneLandline isEqualToString:@""])
+    {
+        _landlinePhoneID = counter;
         counter++;
-    else if (_contactData.phoneMobile != nil)
+    }
+    if (![_contactData.phoneMobile isEqualToString:@""])
+    {
+        _mobilePhoneID = counter;
         counter++;
-    else if (_contactData.mail != nil)
-        counter++;
+    }
+
     _numberOfRows = counter;
 }
 
@@ -92,11 +105,32 @@
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"DataCell";
-    HeaderCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell;
     
-    // Configure the cell...
-    //cell.textLabel.text = @"Max Mustermann";
+    
+    if (indexPath.row == _birthdayID) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DataCell" forIndexPath:indexPath];
+        ((DataCell *) cell).mainTextLabel.text = @"1.1.2010";
+        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Birthday", nil);
+    }
+    else if (indexPath.row == _mailID)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellMail" forIndexPath:indexPath];
+        ((DataCell *) cell).mainTextLabel.text = _contactData.mail;
+        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Mail", nil);
+    }
+    else if (indexPath.row == _landlinePhoneID)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellPhone" forIndexPath:indexPath];
+        ((DataCell *) cell).mainTextLabel.text = _contactData.phoneLandline;
+        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Landline Phone", nil);
+    }
+    else if (indexPath.row == _mobilePhoneID)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellPhone" forIndexPath:indexPath];
+        ((DataCell *) cell).mainTextLabel.text = _contactData.phoneMobile;
+        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Mobile Phone", nil);
+    }
     
     return cell;
 }

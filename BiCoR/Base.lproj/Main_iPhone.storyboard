@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="5ry-HC-Tjl" detailTextLabel="nkC-wo-DO0" style="IBUITableViewCellStyleSubtitle" id="KgE-xx-8JY">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KgE-xx-8JY" id="bvR-Jf-dZD">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
@@ -69,7 +69,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HeaderCell" id="q50-tW-nBI" customClass="HeaderCell">
-                                <rect key="frame" x="0.0" y="55" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q50-tW-nBI" id="1vI-ti-oxo">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -101,7 +101,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" id="hUH-Co-tKk" customClass="DataCell">
-                                <rect key="frame" x="0.0" y="99" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hUH-Co-tKk" id="vzo-oN-cUy">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -137,7 +137,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCellPhone" id="4ay-0u-g5e" customClass="DataCellPhone">
-                                <rect key="frame" x="0.0" y="143" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4ay-0u-g5e" id="7Qf-gy-00A">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -149,6 +149,19 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qae-ZL-e2q">
+                                            <rect key="frame" x="260" y="2" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="h2L-Yx-xd5"/>
+                                            </constraints>
+                                            <state key="normal" image="PhoneImage">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="callButtonClicked:" destination="4ay-0u-g5e" eventType="touchUpInside" id="r9M-hi-QSc"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGs-Ul-Ijy">
                                             <rect key="frame" x="20" y="2" width="280" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -156,27 +169,19 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycT-4I-rfC">
-                                            <rect key="frame" x="254" y="7" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Call">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="callButtonClicked:" destination="4ay-0u-g5e" eventType="touchUpInside" id="Mnb-hh-GZz"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="1mr-vC-hxr" firstAttribute="top" secondItem="7Qf-gy-00A" secondAttribute="top" constant="20" symbolic="YES" id="4bg-W5-Tq0"/>
+                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="trailing" secondItem="1mr-vC-hxr" secondAttribute="trailing" id="DaO-eH-sFq"/>
                                         <constraint firstItem="1mr-vC-hxr" firstAttribute="trailing" secondItem="MGs-Ul-Ijy" secondAttribute="trailing" id="E9x-jC-umq"/>
                                         <constraint firstAttribute="bottom" secondItem="MGs-Ul-Ijy" secondAttribute="bottom" constant="20" symbolic="YES" id="GhI-lG-xUT"/>
                                         <constraint firstItem="MGs-Ul-Ijy" firstAttribute="leading" secondItem="7Qf-gy-00A" secondAttribute="leading" constant="20" symbolic="YES" id="H1z-dA-mwe"/>
+                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="bottom" secondItem="1mr-vC-hxr" secondAttribute="bottom" id="O9M-8p-d9Z"/>
+                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="top" secondItem="MGs-Ul-Ijy" secondAttribute="top" id="OPo-d3-vgn"/>
                                         <constraint firstItem="MGs-Ul-Ijy" firstAttribute="leading" secondItem="1mr-vC-hxr" secondAttribute="leading" id="VtB-LF-DIe"/>
-                                        <constraint firstItem="ycT-4I-rfC" firstAttribute="top" secondItem="7Qf-gy-00A" secondAttribute="top" constant="7" id="adG-56-a8i"/>
                                         <constraint firstItem="MGs-Ul-Ijy" firstAttribute="top" secondItem="7Qf-gy-00A" secondAttribute="top" constant="2" id="jgJ-uV-8Vj"/>
                                         <constraint firstAttribute="trailing" secondItem="MGs-Ul-Ijy" secondAttribute="trailing" constant="20" symbolic="YES" id="mNM-qk-o1X"/>
-                                        <constraint firstAttribute="trailing" secondItem="ycT-4I-rfC" secondAttribute="trailing" constant="36" id="pQh-uN-ihh"/>
+                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="baseline" secondItem="1mr-vC-hxr" secondAttribute="baseline" id="sIr-7p-1bo"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -185,7 +190,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCellMail" id="bJh-Ah-5ee" customClass="DataCellMail">
-                                <rect key="frame" x="0.0" y="187" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="251" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bJh-Ah-5ee" id="hf9-Ad-Pjg">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -204,10 +209,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-aJ-M51">
-                                            <rect key="frame" x="254" y="7" width="30" height="30"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qbe-aJ-M51">
+                                            <rect key="frame" x="260" y="0.0" width="40" height="40"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Mail">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="40" id="jmv-JL-9iI"/>
+                                            </constraints>
+                                            <state key="normal" image="MailImage">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
@@ -216,12 +224,13 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="qbe-aJ-M51" firstAttribute="top" secondItem="hf9-Ad-Pjg" secondAttribute="top" constant="7" id="0rf-VP-5wh"/>
                                         <constraint firstItem="MCw-Pd-A8P" firstAttribute="leading" secondItem="D43-oS-j7N" secondAttribute="leading" id="5tA-Kj-9eu"/>
+                                        <constraint firstItem="qbe-aJ-M51" firstAttribute="trailing" secondItem="MCw-Pd-A8P" secondAttribute="trailing" id="7Fg-eT-bb4"/>
+                                        <constraint firstAttribute="bottom" secondItem="qbe-aJ-M51" secondAttribute="bottom" constant="3" id="BOe-I5-zY1"/>
                                         <constraint firstItem="MCw-Pd-A8P" firstAttribute="top" secondItem="hf9-Ad-Pjg" secondAttribute="top" constant="2" id="Cv7-Oq-Zkn"/>
                                         <constraint firstItem="D43-oS-j7N" firstAttribute="trailing" secondItem="MCw-Pd-A8P" secondAttribute="trailing" id="SVw-pV-Wih"/>
+                                        <constraint firstItem="qbe-aJ-M51" firstAttribute="top" secondItem="hf9-Ad-Pjg" secondAttribute="top" id="TTO-Ze-ujf"/>
                                         <constraint firstAttribute="trailing" secondItem="MCw-Pd-A8P" secondAttribute="trailing" constant="20" symbolic="YES" id="Tw9-Aa-M9O"/>
-                                        <constraint firstAttribute="trailing" secondItem="qbe-aJ-M51" secondAttribute="trailing" constant="36" id="Z4L-cx-TTC"/>
                                         <constraint firstAttribute="bottom" secondItem="MCw-Pd-A8P" secondAttribute="bottom" constant="20" symbolic="YES" id="aBO-Cl-UYX"/>
                                         <constraint firstItem="MCw-Pd-A8P" firstAttribute="leading" secondItem="hf9-Ad-Pjg" secondAttribute="leading" constant="20" symbolic="YES" id="aDn-L0-2NG"/>
                                         <constraint firstItem="D43-oS-j7N" firstAttribute="top" secondItem="hf9-Ad-Pjg" secondAttribute="top" constant="20" symbolic="YES" id="d1u-Te-IZf"/>
@@ -264,6 +273,10 @@
             <point key="canvasLocation" x="-129" y="41"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MailImage" width="30" height="30"/>
+        <image name="PhoneImage" width="30" height="30"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

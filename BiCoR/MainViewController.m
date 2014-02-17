@@ -192,9 +192,13 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    cell.textLabel.text = [[_model objectAtIndex:indexPath.row] lastName];
-    cell.detailTextLabel.text = @"01.01.2000";
+    Contact *c = [_model objectAtIndex:indexPath. row];
+    cell.textLabel.text = c.lastName;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat =  @"dd'.'MM'.'yyyy";
+    dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:3600];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:c.birthDate];
     
     return cell;
 }
