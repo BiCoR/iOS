@@ -171,17 +171,16 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="top" secondItem="7Qf-gy-00A" secondAttribute="top" constant="20" symbolic="YES" id="4bg-W5-Tq0"/>
-                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="trailing" secondItem="1mr-vC-hxr" secondAttribute="trailing" id="DaO-eH-sFq"/>
-                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="trailing" secondItem="MGs-Ul-Ijy" secondAttribute="trailing" id="E9x-jC-umq"/>
+                                        <constraint firstAttribute="bottom" secondItem="1mr-vC-hxr" secondAttribute="bottom" constant="1" id="5tb-gH-n4P"/>
                                         <constraint firstAttribute="bottom" secondItem="MGs-Ul-Ijy" secondAttribute="bottom" constant="20" symbolic="YES" id="GhI-lG-xUT"/>
                                         <constraint firstItem="MGs-Ul-Ijy" firstAttribute="leading" secondItem="7Qf-gy-00A" secondAttribute="leading" constant="20" symbolic="YES" id="H1z-dA-mwe"/>
-                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="bottom" secondItem="1mr-vC-hxr" secondAttribute="bottom" id="O9M-8p-d9Z"/>
+                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="leading" secondItem="MGs-Ul-Ijy" secondAttribute="leading" id="INT-Ok-w4K"/>
+                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="trailing" secondItem="qae-ZL-e2q" secondAttribute="trailing" id="Npd-g6-s27"/>
                                         <constraint firstItem="qae-ZL-e2q" firstAttribute="top" secondItem="MGs-Ul-Ijy" secondAttribute="top" id="OPo-d3-vgn"/>
-                                        <constraint firstItem="MGs-Ul-Ijy" firstAttribute="leading" secondItem="1mr-vC-hxr" secondAttribute="leading" id="VtB-LF-DIe"/>
                                         <constraint firstItem="MGs-Ul-Ijy" firstAttribute="top" secondItem="7Qf-gy-00A" secondAttribute="top" constant="2" id="jgJ-uV-8Vj"/>
+                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="bottom" secondItem="qae-ZL-e2q" secondAttribute="bottom" id="lvB-eV-hga"/>
                                         <constraint firstAttribute="trailing" secondItem="MGs-Ul-Ijy" secondAttribute="trailing" constant="20" symbolic="YES" id="mNM-qk-o1X"/>
-                                        <constraint firstItem="qae-ZL-e2q" firstAttribute="baseline" secondItem="1mr-vC-hxr" secondAttribute="baseline" id="sIr-7p-1bo"/>
+                                        <constraint firstItem="1mr-vC-hxr" firstAttribute="trailing" secondItem="MGs-Ul-Ijy" secondAttribute="trailing" id="p5j-Pj-wsW"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -274,8 +273,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MailImage" width="30" height="30"/>
-        <image name="PhoneImage" width="30" height="30"/>
+        <image name="MailImage" width="512" height="512"/>
+        <image name="PhoneImage" width="512" height="512"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
