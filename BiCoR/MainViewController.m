@@ -23,18 +23,22 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     _model = [[NSMutableArray alloc] init];
     
     //Fill the toolbar
+    //////////////////
+    //Spacer
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
+    
+    //Text Label
     _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 23)];
-//    _statusLabel = [[UILabel alloc] init];
     _statusLabel.textAlignment = NSTextAlignmentCenter;
     _statusLabel.backgroundColor = [UIColor clearColor];
-
-    _statusLabel.text = @"Put in text here";
+    
+    _statusLabel.font = [_statusLabel.font fontWithSize:15];
+    _statusLabel.text = @"";
     [_statusLabel sizeToFit];
     UIBarButtonItem *toolBarTitle = [[UIBarButtonItem alloc] initWithCustomView:_statusLabel];
     
-    [self setToolbarItems:[NSArray arrayWithObjects:toolBarTitle, nil] animated:NO];
+    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, nil] animated:NO];
     
-    //TODO: Handle the Text Label
 }
 
 /**
@@ -43,6 +47,12 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //self.edgesForExtendedLayout = UIRectEdgeTop;
+    //Set the refresh Controller
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    
+    [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+    
     //Get username and password
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -68,8 +78,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)loadDataFirstTime
 {
-    //_statusText.title = NSLocalizedString(@"Load Data", @"String to identify the loading of data");
-    //TODO: Handle the Text field
+    [self setStatusForLoadingData:YES];
     
     //Get username and password
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -80,8 +89,28 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     ServerConnection *connection = [ServerConnection sharedServerConnection];
     [connection setUserName:userName AndPassword:password];
     [connection loadPeopleDataBackgroundWithDelegate:self];
-    
-    //_statusText.title = @"";
+}
+
+/**
+ Functions to inform the user, that the programm currently load data
+ @param loadingData: Indicator the define, if the program will load data
+ */
+- (void) setStatusForLoadingData: (bool) loadingData;
+{
+    if (loadingData)
+    {
+        _statusLabel.text = NSLocalizedString(@"Load Data", nil);
+        [_statusLabel sizeToFit];
+    }
+    else
+    {
+        _statusLabel.text = @"";
+        [_statusLabel sizeToFit];
+    }
+}
+
+- (void)refreshView:(id)sender {
+    NSLog(@"fire");
 }
 
 
@@ -125,6 +154,8 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
         [_model addObject:person];
         [self.tableView reloadData];
     }
+    
+    [self setStatusForLoadingData:NO];
 }
 
 /**
@@ -136,6 +167,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
     dataAlert.tag = 0;
     [dataAlert show];
+    [self setStatusForLoadingData:NO];
 }
 
 /**
@@ -147,6 +179,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     dataAlert.alertViewStyle = UIAlertViewStyleDefault;
     dataAlert.tag = 1;
     [dataAlert show];
+    [self setStatusForLoadingData:NO];
 }
 
 /**
@@ -158,6 +191,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     dataAlert.tag = 1;
     dataAlert.alertViewStyle = UIAlertViewStyleDefault;
     [dataAlert show];
+    [self setStatusForLoadingData:NO];
 }
 
 /////////////////////////////////

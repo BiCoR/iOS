@@ -28,4 +28,13 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
  */
 - (void) loadDataFirstTime;
 
+/**
+ Functions to inform the user, that the programm currently load data
+ @param loadingData: Indicator the define, if the program will load data
+ */
+- (void) setStatusForLoadingData: (bool) loadingData;
+
+
+- (void)refreshView:(id)sender;
+
 @end
