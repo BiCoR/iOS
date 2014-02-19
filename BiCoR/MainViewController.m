@@ -101,16 +101,25 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     {
         _statusLabel.text = NSLocalizedString(@"Load Data", nil);
         [_statusLabel sizeToFit];
+        _statusLoadingData = YES;
     }
     else
     {
         _statusLabel.text = @"";
         [_statusLabel sizeToFit];
+        _statusLoadingData = NO;
+        [self.refreshControl endRefreshing];
     }
 }
 
+/**
+ Function which is called, when the user scrolls up to refresh the data
+ @param sender: The sender of the event
+ */
 - (void)refreshView:(id)sender {
-    NSLog(@"fire");
+    if (!_statusLoadingData) {
+        [self loadDataFirstTime];
+    }
 }
 
 
@@ -149,8 +158,8 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)serverConnectionFinishedDataRequest:(NSArray *)resultObjects
 {
+    [_model removeAllObjects];
     for (Contact *person in resultObjects[1]) {
-        NSLog(@"%@", person.lastName);
         [_model addObject:person];
         [self.tableView reloadData];
     }

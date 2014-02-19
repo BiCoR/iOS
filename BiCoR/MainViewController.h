@@ -20,6 +20,7 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
 //Properties
 @property NSMutableArray *model;
 @property UILabel *statusLabel;
+@property bool statusLoadingData;
 
 //Functions
 
@@ -35,6 +36,10 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
 - (void) setStatusForLoadingData: (bool) loadingData;
 
 
+/**
+ Function which is called, when the user scrolls up to refresh the data
+ @param sender: The sender of the event
+ */
 - (void)refreshView:(id)sender;
 
 @end
