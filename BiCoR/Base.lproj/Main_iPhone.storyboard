@@ -37,7 +37,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gHY-cR-1Kq" kind="push" id="zFk-C7-3Pf"/>
+                                    <segue destination="gHY-cR-1Kq" kind="push" identifier="personDetails" id="zFk-C7-3Pf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -50,6 +50,11 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="BiCoR" id="id2-S1-Ppt">
                         <barButtonItem key="backBarButtonItem" title="Back" id="G6m-xZ-7Hz"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="jwM-PN-hsU">
+                            <connections>
+                                <segue destination="YdN-zS-GWN" kind="push" identifier="personEdit" id="PNK-XA-uVV"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="97F-R2-xa7" id="FgC-yZ-iFq"/>
@@ -58,6 +63,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ur1-do-puP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="385" y="41"/>
+        </scene>
+        <!--Web View Controller - Edit Persons-->
+        <scene sceneID="3lc-p2-W49">
+            <objects>
+                <viewController id="YdN-zS-GWN" customClass="WebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MXw-0t-U4u"/>
+                        <viewControllerLayoutGuide type="bottom" id="set-CK-VkU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SNK-tR-Gt9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-mH-Dg1">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Persons" id="0gM-Xr-fpd"/>
+                    <connections>
+                        <outlet property="webView" destination="2wT-mH-Dg1" id="xXa-Y8-9Fi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iID-CN-SPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1467" y="159"/>
         </scene>
         <!--Person Details View Controller - Person Details-->
         <scene sceneID="VmO-oE-4vV">
@@ -246,11 +281,17 @@
                             <outlet property="delegate" destination="gHY-cR-1Kq" id="hWl-8x-GU1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Person Details" id="fKA-fm-eWj"/>
+                    <navigationItem key="navigationItem" title="Person Details" id="fKA-fm-eWj">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="sxw-UL-XCi">
+                            <connections>
+                                <segue destination="YdN-zS-GWN" kind="push" identifier="personEdit" id="Lbf-gZ-Syh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3E-BL-JsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="30"/>
+            <point key="canvasLocation" x="929" y="-373"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RQa-g8-LSg">
@@ -281,4 +322,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="PNK-XA-uVV"/>
+    </inferredMetricsTieBreakers>
 </document>

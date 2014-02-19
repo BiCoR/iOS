@@ -47,7 +47,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.edgesForExtendedLayout = UIRectEdgeTop;
+    
     //Set the refresh Controller
     self.refreshControl = [[UIRefreshControl alloc] init];
     
@@ -255,9 +255,16 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    PersonDetailsViewController *newController = [segue destinationViewController];
-    NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-    [newController setContactData:[_model objectAtIndex:path.row]];
+    
+    if ([segue.identifier isEqualToString:@"personDetails"]) {
+        PersonDetailsViewController *newController = [segue destinationViewController];
+        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        [newController setContactData:[_model objectAtIndex:path.row]];
+    }
+    else if ([segue.identifier isEqualToString:@"personEdit"])
+    {
+        //TODO: Add functions
+    }
 }
 
 @end
