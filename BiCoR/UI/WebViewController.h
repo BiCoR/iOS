@@ -10,10 +10,11 @@
 #import "ServerConnection.h"
 
 
-@interface WebViewController : UIViewController
+@interface WebViewController : UIViewController <UIWebViewDelegate>
 
 //Properties
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 //Methods
 

@@ -22,10 +22,11 @@
     //Adapt the insets to match the Toolbar
     UIEdgeInsets inset =  _webView.scrollView.contentInset;
     
-    _webView.scrollView.contentInset = UIEdgeInsetsMake(inset.top, inset.left, inset.right, 88);
+    _webView.scrollView.contentInset = UIEdgeInsetsMake(inset.top, inset.left, inset.right, inset.bottom);
     
     
-    //Open the Website: Add edit information
+    //Open the Website
+    //TODO: Add edit information
     ServerConnection *connection = [ServerConnection sharedServerConnection];
     
 	NSString *dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:@"/people"]];
@@ -33,6 +34,9 @@
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:dataUrl]];
     
     [requestData addValue:connection.authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
+    
+    
+    [_activityIndicator startAnimating];
     
     [_webView loadRequest:requestData];
     
@@ -55,4 +59,15 @@
 {
     self.navigationController.toolbarHidden = NO;
 }
+
+///////////////////////////////////////
+//Delegate Methods for the UIWebView//
+/////////////////////////////////////
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    NSLog(@"Fire");
+    [_activityIndicator stopAnimating];
+}
+
 @end
