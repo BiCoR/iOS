@@ -10,6 +10,7 @@
 #import "ServerConnection.h"
 #import "Contact.h"
 #import "PersonDetailsViewController.h"
+#import "WebViewController.h"
 
 //Constants
 extern NSString *const SETTINGS_USERNAME_KEY;
@@ -41,5 +42,11 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
  @param sender: The sender of the event
  */
 - (void)refreshView:(id)sender;
+
+/**
+ Function called when the add user button is clicked
+ @param sender: The sender of the event
+ */
+- (void)addUserButtonClicked:(id)sender;
 
 @end

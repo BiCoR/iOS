@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ServerConnection.h"
 
+extern int const WEB_VIEW_CONTROLLER_MANAGE_USERS;
+extern int const WEB_VIEW_CONTROLLER_ADD_USER;
+extern int const WEB_VIEW_CONTROLLER_EDIT_USER;
 
 @interface WebViewController : UIViewController <UIWebViewDelegate>
 
@@ -16,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
-//Methods
+@property int actionType;
+@property int userId;
 
 @end

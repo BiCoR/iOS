@@ -37,7 +37,10 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     [_statusLabel sizeToFit];
     UIBarButtonItem *toolBarTitle = [[UIBarButtonItem alloc] initWithCustomView:_statusLabel];
     
-    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, nil] animated:NO];
+    //Create new User Button
+    UIBarButtonItem *newUserBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUserButtonClicked:)];
+    
+    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, newUserBtn, nil] animated:NO];
     
 }
 
@@ -122,6 +125,14 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     }
 }
 
+/**
+ Function called when the add user button is clicked
+ @param sender: The sender of the event
+ */
+- (void)addUserButtonClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"personAdd" sender:sender];
+}
 
 /**
  Called if the view recive a memory warning
@@ -263,7 +274,13 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     }
     else if ([segue.identifier isEqualToString:@"personEdit"])
     {
-        //TODO: Add functions
+        WebViewController *newController = [segue destinationViewController];
+        newController.actionType = WEB_VIEW_CONTROLLER_MANAGE_USERS;
+    }
+    else if ([segue.identifier isEqualToString:@"personAdd"])
+    {
+        WebViewController *newController = [segue destinationViewController];
+        newController.actionType = WEB_VIEW_CONTROLLER_ADD_USER;
     }
 }
 

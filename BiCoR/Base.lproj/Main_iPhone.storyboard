@@ -58,6 +58,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="97F-R2-xa7" id="FgC-yZ-iFq"/>
+                        <segue destination="YdN-zS-GWN" kind="push" identifier="personAdd" id="0id-7Q-rQS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ur1-do-puP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -339,6 +340,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PNK-XA-uVV"/>
+        <segue reference="0id-7Q-rQS"/>
     </inferredMetricsTieBreakers>
 </document>

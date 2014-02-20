@@ -8,6 +8,10 @@
 
 #import "WebViewController.h"
 
+int const WEB_VIEW_CONTROLLER_MANAGE_USERS = 0;
+int const WEB_VIEW_CONTROLLER_ADD_USER = 1;
+int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
+
 @implementation WebViewController
 
 /**
@@ -19,22 +23,31 @@
     
     self.navigationController.toolbarHidden = YES;
     
-    //Adapt the insets to match the Toolbar
-    UIEdgeInsets inset =  _webView.scrollView.contentInset;
+    //Prepate the Connection
     
-    _webView.scrollView.contentInset = UIEdgeInsetsMake(inset.top, inset.left, inset.right, inset.bottom);
-    
-    
-    //Open the Website
-    //TODO: Add edit information
     ServerConnection *connection = [ServerConnection sharedServerConnection];
     
-	NSString *dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:@"/people"]];
+    NSString *dataUrl;
     
+    //Choose the Type
+    switch (_actionType) {
+        case WEB_VIEW_CONTROLLER_MANAGE_USERS:
+             dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:SERVER_CONNECTION_ALL_PEOPLE_PAGE_WEB]];
+            break;
+        case WEB_VIEW_CONTROLLER_ADD_USER:
+            dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:SERVER_CONNECTION_ADD_PEOPLE_PAGE_WEB]];
+            break;
+        case WEB_VIEW_CONTROLLER_EDIT_USER:
+            dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:[SERVER_CONNECTION_PERSON_PAGE_WEB stringByAppendingString:[NSString stringWithFormat:@"%i", _userId]]]];
+            break;
+        default:
+            break;
+    }
+    
+    //Prepare and send the request
     NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:dataUrl]];
     
     [requestData addValue:connection.authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
-    
     
     [_activityIndicator startAnimating];
     
