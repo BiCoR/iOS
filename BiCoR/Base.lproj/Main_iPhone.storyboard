@@ -87,15 +87,15 @@
                                 </connections>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gAt-6X-LLA">
-                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                                <rect key="frame" x="150" y="230" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gAt-6X-LLA" firstAttribute="centerY" secondItem="2wT-mH-Dg1" secondAttribute="centerY" id="0Mp-Iv-28t"/>
                             <constraint firstItem="2wT-mH-Dg1" firstAttribute="leading" secondItem="SNK-tR-Gt9" secondAttribute="leading" id="8cn-gE-1bZ"/>
                             <constraint firstAttribute="trailing" secondItem="2wT-mH-Dg1" secondAttribute="trailing" id="9c8-mk-Rwt"/>
-                            <constraint firstItem="set-CK-VkU" firstAttribute="top" secondItem="gAt-6X-LLA" secondAttribute="bottom" constant="142" id="BQg-SN-sjt"/>
                             <constraint firstAttribute="bottom" secondItem="2wT-mH-Dg1" secondAttribute="bottom" id="Q7I-tJ-KYP"/>
                             <constraint firstItem="2wT-mH-Dg1" firstAttribute="top" secondItem="SNK-tR-Gt9" secondAttribute="top" id="cix-Ib-dx2"/>
                             <constraint firstItem="2wT-mH-Dg1" firstAttribute="centerX" secondItem="gAt-6X-LLA" secondAttribute="centerX" id="qlc-St-LyA"/>
@@ -340,6 +340,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0id-7Q-rQS"/>
+        <segue reference="Lbf-gZ-Syh"/>
     </inferredMetricsTieBreakers>
 </document>

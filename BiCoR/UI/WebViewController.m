@@ -38,7 +38,7 @@ int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
             dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:SERVER_CONNECTION_ADD_PEOPLE_PAGE_WEB]];
             break;
         case WEB_VIEW_CONTROLLER_EDIT_USER:
-            dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:[SERVER_CONNECTION_PERSON_PAGE_WEB stringByAppendingString:[NSString stringWithFormat:@"%i", _userId]]]];
+            dataUrl = [connection.url stringByAppendingString:[connection.userPartOfUrl stringByAppendingString:[SERVER_CONNECTION_PERSON_PAGE_WEB stringByAppendingString:[NSString stringWithFormat:@"%i/edit", _userId]]]];
             break;
         default:
             break;
@@ -71,6 +71,7 @@ int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
 - (void)viewWillDisappear:(BOOL)animated
 {
     self.navigationController.toolbarHidden = NO;
+    _userId = -1;
 }
 
 ///////////////////////////////////////

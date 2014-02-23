@@ -10,6 +10,9 @@
 #import "Contact.h"
 #import "HeaderCell.h"
 #import "DataCell.h"
+#import "DataCellMail.h"
+#import "DataCellPhone.h"
+#import "WebViewController.h"
 
 @interface PersonDetailsViewController : UITableViewController
 

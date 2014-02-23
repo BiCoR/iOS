@@ -116,20 +116,20 @@
     else if (indexPath.row == _mailID)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellMail" forIndexPath:indexPath];
-        ((DataCell *) cell).mainTextLabel.text = _contactData.mail;
-        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Mail", nil);
+        ((DataCellMail *) cell).mainTextLabel.text = _contactData.mail;
+        ((DataCellMail *) cell).titleLabel.text = NSLocalizedString(@"Mail", nil);
     }
     else if (indexPath.row == _landlinePhoneID)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellPhone" forIndexPath:indexPath];
-        ((DataCell *) cell).mainTextLabel.text = _contactData.phoneLandline;
-        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Landline Phone", nil);
+        ((DataCellPhone *) cell).mainTextLabel.text = _contactData.phoneLandline;
+        ((DataCellPhone *) cell).titleLabel.text = NSLocalizedString(@"Landline Phone", nil);
     }
     else if (indexPath.row == _mobilePhoneID)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellPhone" forIndexPath:indexPath];
-        ((DataCell *) cell).mainTextLabel.text = _contactData.phoneMobile;
-        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Mobile Phone", nil);
+        ((DataCellPhone *) cell).mainTextLabel.text = _contactData.phoneMobile;
+        ((DataCellPhone *) cell).titleLabel.text = NSLocalizedString(@"Mobile Phone", nil);
     }
     
     return cell;
@@ -153,9 +153,26 @@
  */
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    
-    
     return 43;
+}
+
+/////////////////////////
+//Navigation Functions//
+///////////////////////
+
+/**
+ Function called, before the seque is called
+ */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([segue.identifier isEqualToString:@"personEdit"]) {
+        WebViewController *newController = [segue destinationViewController];
+        newController.actionType = WEB_VIEW_CONTROLLER_EDIT_USER;
+        newController.userId = _contactData.ID;
+    }
+    
+    
 }
 
 @end

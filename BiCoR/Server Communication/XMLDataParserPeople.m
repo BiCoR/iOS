@@ -15,7 +15,7 @@ NSString *const XML_DATA_PARSER_PEOPLE_BIRTH_DATE_TAG = @"geburtsdatum";
 NSString *const XML_DATA_PARSER_PEOPLE_LAST_NAME_TAG = @"last-name";
 NSString *const XML_DATA_PARSER_PEOPLE_PHONE_LANDLINE_TAG = @"telefon-fest";
 NSString *const XML_DATA_PARSER_PEOPLE_PHONE_MOBILE_TAG = @"telefon-mobil";
-NSString *const XML_DATA_PARSER_PEOPLE_ID_TAG = @"user-id";
+NSString *const XML_DATA_PARSER_PEOPLE_ID_TAG = @"id";
 NSString *const XML_DATA_PARSER_PEOPLE_PERSON_TAG = @"person";
 
 @implementation XMLDataParserPeople
