@@ -118,6 +118,7 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCellMail" forIndexPath:indexPath];
         ((DataCellMail *) cell).mainTextLabel.text = _contactData.mail;
         ((DataCellMail *) cell).titleLabel.text = NSLocalizedString(@"Mail", nil);
+        ((DataCellMail *) cell).superViewController = self;
     }
     else if (indexPath.row == _landlinePhoneID)
     {

@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface DataCellMail : UITableViewCell
+@class PersonDetailsViewController;
+
+@interface DataCellMail : UITableViewCell <MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *mainTextLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak) PersonDetailsViewController *superViewController;
 
 //Actions
 

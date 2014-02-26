@@ -14,5 +14,7 @@
  Called when the Button "call" is clicked
  */
 - (IBAction)callButtonClicked:(id)sender {
+    NSString *phoneNumber = [@"telprompt://" stringByAppendingString:_mainTextLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
 }
 @end
