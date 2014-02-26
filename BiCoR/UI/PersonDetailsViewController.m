@@ -121,7 +121,7 @@
     else if (indexPath.row == _ageID)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCell" forIndexPath:indexPath];
-        ((DataCell *) cell).mainTextLabel.text = [NSString stringWithFormat:@"%i", _contactData.ageOfUser];
+        ((DataCell *) cell).mainTextLabel.text = [NSString stringWithFormat:@"%ld", (long)_contactData.ageOfUser];
         ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Age", nil);
     }
     else if (indexPath.row == _mailID)

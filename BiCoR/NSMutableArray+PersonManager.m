@@ -22,8 +22,8 @@
     [self sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     //Search the position in the array where the birthdate is behind the current date
-    int fieldsToMove = 0;
-    int compareValueNow;
+    NSInteger fieldsToMove = 0;
+    NSInteger compareValueNow;
     NSDate *now = [NSDate date];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

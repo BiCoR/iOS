@@ -21,7 +21,7 @@
 @property NSString *phoneMobile;
 @property UIImage *picture;
 @property int ID;
-@property (readonly) int sortValue;
+@property (readonly) NSInteger sortValue;
 @property (readonly) bool hasBirthday;
 
 //Functions
@@ -31,7 +31,7 @@
  Function the generate the age of the user
  @return: the age as an integer value
  */
-- (int) ageOfUser;
+- (NSInteger) ageOfUser;
 
 /**
  Function to get the first and the last name as one String

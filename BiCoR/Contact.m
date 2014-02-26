@@ -14,7 +14,7 @@
  Function the generate the age of the user
  @return: the age as an integer value
  */
-- (int)ageOfUser
+- (NSInteger)ageOfUser
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     return [[calendar components:NSYearCalendarUnit fromDate:_birthDate toDate:[[NSDate alloc] init] options:0] year];
@@ -35,7 +35,7 @@
  Function which will return the sortable value
  @return: a value for sorting purposes
  */
-- (int)sortValue
+- (NSInteger)sortValue
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat =  @"MMdd";
