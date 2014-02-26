@@ -19,6 +19,7 @@
 {
     [super awakeFromNib];
     _birthdayID = -1;
+    _ageID = -1;
     _mailID = -1;
     _landlinePhoneID = -1;
     _mobilePhoneID = -1;
@@ -48,8 +49,9 @@
 - (void)setContactData:(Contact *)contactData
 {
     _contactData = contactData;
-    int counter = 1;
+    int counter = 2;
     _birthdayID = 0;
+    _ageID = 1;
     if (![_contactData.mail isEqualToString:@""])
     {
         _mailID = counter;
@@ -110,8 +112,17 @@
     
     if (indexPath.row == _birthdayID) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DataCell" forIndexPath:indexPath];
-        ((DataCell *) cell).mainTextLabel.text = @"1.1.2010";
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat =  @"dd'.'MM'.'yyyy";
+        dateFormatter.timeZone = [NSTimeZone localTimeZone];
+        ((DataCell *) cell).mainTextLabel.text = [dateFormatter stringFromDate:_contactData.birthDate];
         ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Birthday", nil);
+    }
+    else if (indexPath.row == _ageID)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DataCell" forIndexPath:indexPath];
+        ((DataCell *) cell).mainTextLabel.text = [NSString stringWithFormat:@"%i", _contactData.ageOfUser];
+        ((DataCell *) cell).titleLabel.text = NSLocalizedString(@"Age", nil);
     }
     else if (indexPath.row == _mailID)
     {

@@ -253,7 +253,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat =  @"dd'.'MM'.'yyyy";
-    dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:3600];
+    dateFormatter.timeZone = [NSTimeZone localTimeZone];
     cell.detailTextLabel.text = [dateFormatter stringFromDate:c.birthDate];
     
     return cell;

@@ -20,6 +20,7 @@
 @property Contact* contactData;
 @property int numberOfRows;
 @property int birthdayID;
+@property int ageID;
 @property int mailID;
 @property int landlinePhoneID;
 @property int mobilePhoneID;
