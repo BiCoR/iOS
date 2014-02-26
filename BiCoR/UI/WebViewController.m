@@ -80,7 +80,6 @@ int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSLog(@"Fire");
     [_activityIndicator stopAnimating];
 }
 

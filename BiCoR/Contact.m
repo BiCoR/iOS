@@ -16,8 +16,11 @@
  */
 - (int)ageOfUser
 {
-    return 0; //TODO: Add function
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    return [[calendar components:NSYearCalendarUnit fromDate:_birthDate toDate:[[NSDate alloc] init] options:0] year];
 }
+
+
 
 /**
  Function to get the first and the last name as one String
@@ -26,6 +29,31 @@
 - (NSString *)getFullName
 {
     return [NSString stringWithFormat:@"%@ %@", _firstName, _lastName];
+}
+
+/**
+ Function which will return the sortable value
+ @return: a value for sorting purposes
+ */
+- (int)sortValue
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat =  @"MMdd";
+    dateFormatter.timeZone = [NSTimeZone localTimeZone];
+    return [[dateFormatter stringFromDate:_birthDate] integerValue];
+}
+
+/**
+ Function which will identify if the contact has birthday today
+ @return: a boolean to identify if the contact has birthday today
+ */
+- (bool)hasBirthday
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat =  @"MMdd";
+    dateFormatter.timeZone = [NSTimeZone localTimeZone];
+    
+    return self.sortValue == [[dateFormatter stringFromDate:[[NSDate alloc] init]] integerValue];
 }
 
 @end

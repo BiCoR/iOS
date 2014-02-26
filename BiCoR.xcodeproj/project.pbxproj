@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B142DA418BE538D00269A0A /* NSMutableArray+PersonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B142DA318BE538D00269A0A /* NSMutableArray+PersonManager.m */; };
 		9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CB9C1882CF49003A7A44 /* ServerConnection.m */; };
 		9B6AD554187F083900195217 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AD553187F083900195217 /* MainViewController.m */; };
 		9B79EA33189317BC00A372B7 /* XMLDataParserPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B79EA32189317BC00A372B7 /* XMLDataParserPeople.m */; };
@@ -46,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9B142DA218BE538D00269A0A /* NSMutableArray+PersonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PersonManager.h"; sourceTree = "<group>"; };
+		9B142DA318BE538D00269A0A /* NSMutableArray+PersonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PersonManager.m"; sourceTree = "<group>"; };
 		9B60CB9B1882CF49003A7A44 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConnection.h; path = "Server Communication/ServerConnection.h"; sourceTree = "<group>"; };
 		9B60CB9C1882CF49003A7A44 /* ServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerConnection.m; path = "Server Communication/ServerConnection.m"; sourceTree = "<group>"; };
 		9B6AD552187F083900195217 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 			children = (
 				9B8967E11880259B00520BE6 /* Contact.h */,
 				9B8967E21880259B00520BE6 /* Contact.m */,
+				9B142DA218BE538D00269A0A /* NSMutableArray+PersonManager.h */,
+				9B142DA318BE538D00269A0A /* NSMutableArray+PersonManager.m */,
 			);
 			name = dataModel;
 			sourceTree = "<group>";
@@ -392,6 +397,7 @@
 				9B9FEBE21893FC5C0074B125 /* XMLDataParserLogin.m in Sources */,
 				9B87BFB118B4EB0200351557 /* WebViewController.m in Sources */,
 				9B8967E31880259B00520BE6 /* Contact.m in Sources */,
+				9B142DA418BE538D00269A0A /* NSMutableArray+PersonManager.m in Sources */,
 				9B9A587518B0DABE008498F6 /* DataCell.m in Sources */,
 				9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */,
 				9B8AB524187EE39B0090757F /* AppDelegate.m in Sources */,

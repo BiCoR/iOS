@@ -21,6 +21,8 @@
 @property NSString *phoneMobile;
 @property UIImage *picture;
 @property int ID;
+@property (readonly) int sortValue;
+@property (readonly) bool hasBirthday;
 
 //Functions
 
@@ -36,5 +38,6 @@
  @return: FIRSTNAME LASTNAME as String
  */
 - (NSString *) getFullName;
+
 
 @end

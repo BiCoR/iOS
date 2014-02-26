@@ -11,6 +11,7 @@
 #import "Contact.h"
 #import "PersonDetailsViewController.h"
 #import "WebViewController.h"
+#import "NSMutableArray+PersonManager.h"
 
 //Constants
 extern NSString *const SETTINGS_USERNAME_KEY;

@@ -61,7 +61,7 @@ NSString *const XML_DATA_PARSER_PEOPLE_PERSON_TAG = @"person";
     {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         dateFormatter.dateFormat =  @"yyyy'-'MM'-'dd";
-        dateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:3600];
+        dateFormatter.timeZone = [NSTimeZone localTimeZone];
         _person.birthDate = [dateFormatter dateFromString:self.savedCharecters];
     }
     

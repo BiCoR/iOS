@@ -175,6 +175,8 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
         [self.tableView reloadData];
     }
     
+    [_model sort];
+    
     [self setStatusForLoadingData:NO];
 }
 
