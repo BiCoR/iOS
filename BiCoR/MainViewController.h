@@ -23,6 +23,7 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
 @property NSMutableArray *model;
 @property UILabel *statusLabel;
 @property bool statusLoadingData;
+@property NSInteger switchID;
 
 //Functions
 
@@ -49,5 +50,12 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
  @param sender: The sender of the event
  */
 - (void)addUserButtonClicked:(id)sender;
+
+/**
+ Function to show the details view of one user
+ @param userID: the user id as integer value
+ */
+- (void)showDetailsViewForUserWithId: (NSNumber *) userID;
+
 
 @end

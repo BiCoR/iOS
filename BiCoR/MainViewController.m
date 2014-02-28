@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "AppDelegate.h"
 
 //CONSTANTS
 NSString * const SETTINGS_USERNAME_KEY = @"USERNAME";
@@ -21,6 +22,11 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 {
     [super awakeFromNib];
     _model = [[NSMutableArray alloc] init];
+    _switchID = -1;
+    
+    //Add a reference of the model to the App Delegate
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.model = _model;
     
     //Fill the toolbar
     //////////////////
@@ -49,8 +55,6 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
     //Set the refresh Controller
     self.refreshControl = [[UIRefreshControl alloc] init];
     
@@ -249,12 +253,18 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     
     // Configure the cell...
     Contact *c = [_model objectAtIndex:indexPath. row];
-    cell.textLabel.text = c.lastName;
+    cell.textLabel.text = [c getFullName];
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat =  @"dd'.'MM'.'yyyy";
     dateFormatter.timeZone = [NSTimeZone localTimeZone];
     cell.detailTextLabel.text = [dateFormatter stringFromDate:c.birthDate];
+    //If the user has Birthday mark the cell and add a image
+    if (c.hasBirthday)
+    {
+        cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.623529 blue:0.364706 alpha:1.0];
+        cell.imageView.image = [UIImage imageNamed:@"BirthdayImage"];
+    }
     
     return cell;
 }
@@ -271,8 +281,13 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     
     if ([segue.identifier isEqualToString:@"personDetails"]) {
         PersonDetailsViewController *newController = [segue destinationViewController];
-        NSIndexPath *path = [self.tableView indexPathForSelectedRow];
-        [newController setContactData:[_model objectAtIndex:path.row]];
+        if (_switchID != -1) {
+            [newController setContactData:[_model getContactWithId:_switchID]];
+            _switchID= -1;
+        } else {
+            NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+            [newController setContactData:[_model objectAtIndex:path.row]];
+        }
     }
     else if ([segue.identifier isEqualToString:@"personEdit"])
     {
@@ -284,6 +299,17 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
         WebViewController *newController = [segue destinationViewController];
         newController.actionType = WEB_VIEW_CONTROLLER_ADD_USER;
     }
+}
+
+/**
+ Function to show the details view of one user
+ @param userID: the user id as integer value
+ */
+- (void)showDetailsViewForUserWithId:(NSNumber *)userID
+{
+    _switchID = [userID integerValue];
+    [self performSegueWithIdentifier:@"personDetails" sender:self];
+    
 }
 
 @end

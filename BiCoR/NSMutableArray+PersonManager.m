@@ -45,4 +45,43 @@
     }
 }
 
+/**
+ Function to set up the UILocalNotification
+ */
+- (void)setUpLocalNotification
+{
+    //TEST CODE
+    NSDate *alertTime = [[NSDate date]
+                         dateByAddingTimeInterval:10];
+    //END TEST CODE
+    
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    notification.fireDate = alertTime;
+    notification.timeZone = [NSTimeZone localTimeZone];
+    notification.applicationIconBadgeNumber = 1;
+    notification.alertAction = nil;
+    notification.alertBody = @"Body text";
+    notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:49] forKey:@"USERID"];
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    
+}
+
+
+/**
+ Function to get the a contact identified with the id of the contact
+ @param: userID: the id of the contact
+ @return: the contact object, nil if no contact found
+ */
+- (Contact *)getContactWithId:(NSInteger)userID
+{
+    for (Contact *c in self) {
+        if (c.ID == userID) {
+            return c;
+        }
+    }
+    
+    return nil;
+}
+
 @end

@@ -17,4 +17,16 @@
  */
 - (void) sort;
 
+/**
+ Function to set up the UILocalNotification
+ */
+- (void) setUpLocalNotification;
+
+/**
+ Function to get the a contact identified with the id of the contact
+ @param: userID: the id of the contact
+ @return: the contact object, nil if no contact found
+ */
+- (Contact *) getContactWithId: (NSInteger)userID;
+
 @end

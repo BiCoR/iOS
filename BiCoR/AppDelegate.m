@@ -10,9 +10,17 @@
 
 @implementation AppDelegate
 
+/**
+ Function called, when the application finished the launching with options
+ */
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    application.applicationIconBadgeNumber = 0;
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+
+    if (localNotif) {
+        [self handleNotification:localNotif];
+    }
     return YES;
 }
 							
@@ -22,15 +30,45 @@
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
-- (void)applicationDidEnterBackground:(UIApplication *)application
+/**
+ Function called when the application receive a local notifcation
+ */
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self handleNotification:notification];
 }
 
+/**
+ Function to handle a notifcation
+ @param (UILocalNotification *) localNotification: the notification object;
+ */
+- (void)handleNotification:(UILocalNotification *)localNotification
+{
+    //Call the View Controller to show the user
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    
+    if (!([navController.visibleViewController isKindOfClass:[MainViewController class]])) {
+        [navController popToRootViewControllerAnimated:NO];
+    }
+    
+    MainViewController *mainController = (MainViewController *)navController.visibleViewController;
+    [mainController showDetailsViewForUserWithId:(NSNumber *)[localNotification.userInfo objectForKey:@"USERID"]];
+}
+
+/**
+ Function called when the Applications enters the Background
+ */
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [_model setUpLocalNotification];
+}
+
+/**
+ Function called when the application enters the foreground
+ */
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        application.applicationIconBadgeNumber = 0;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
