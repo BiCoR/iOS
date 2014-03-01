@@ -56,4 +56,38 @@
     return self.sortValue == [[dateFormatter stringFromDate:[[NSDate alloc] init]] integerValue];
 }
 
+
+/**
+ Function which will return the date of the next Birthday of the user
+ @return: The date of the next birthday of the user
+ */
+- (NSDate *)nextBirthday
+{
+    //Get the current sort value
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat =  @"MMdd";
+    dateFormatter.timeZone = [NSTimeZone localTimeZone];
+    NSInteger currentSortValue = [[dateFormatter stringFromDate:[[NSDate alloc] init] ] integerValue];
+    
+    //Get the components of the current date
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *birthdayDateComp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:_birthDate];
+    
+    NSDateComponents *currentDateComp = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit) fromDate:[[NSDate alloc] init]];
+    
+    //Generate the next Birthday date
+    NSDate *nextBirthday;
+
+    if ([self sortValue] <= currentSortValue) {
+        birthdayDateComp.year = currentDateComp.year + 1;
+        nextBirthday = [calendar dateFromComponents:birthdayDateComp];
+    } else {
+        birthdayDateComp.year = currentDateComp.year;
+        nextBirthday = [calendar dateFromComponents:birthdayDateComp];
+    }
+    
+    return nextBirthday;
+}
+
 @end

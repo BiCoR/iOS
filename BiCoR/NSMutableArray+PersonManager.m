@@ -50,20 +50,24 @@
  */
 - (void)setUpLocalNotification
 {
-    //TEST CODE
-    NSDate *alertTime = [[NSDate date]
-                         dateByAddingTimeInterval:10];
-    //END TEST CODE
+    //Delete old notification
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    
-    notification.fireDate = alertTime;
-    notification.timeZone = [NSTimeZone localTimeZone];
-    notification.applicationIconBadgeNumber = 1;
-    notification.alertAction = nil;
-    notification.alertBody = @"Body text";
-    notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:49] forKey:@"USERID"];
-    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+    //Add new Notifications
+    for (Contact *c in self) {
+        @autoreleasepool {
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+
+            notification.fireDate = c.nextBirthday;
+            notification.timeZone = [NSTimeZone localTimeZone];
+            notification.applicationIconBadgeNumber = 1;
+            notification.alertAction = nil;
+            notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"User %@ has Birthday", nil), [c getFullName]];
+            notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:c.ID] forKey:@"USERID"];
+            
+            [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+        }
+    }
     
 }
 

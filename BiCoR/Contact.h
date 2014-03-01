@@ -23,6 +23,7 @@
 @property int ID;
 @property (readonly) NSInteger sortValue;
 @property (readonly) bool hasBirthday;
+@property (readonly) NSDate *nextBirthday;
 
 //Functions
 
