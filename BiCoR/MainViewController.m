@@ -30,6 +30,9 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     
     //Fill the toolbar
     //////////////////
+    //Settings Buttons
+    UIBarButtonItem *settingsBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) style:UIBarButtonItemStylePlain target:self action:@selector(settingsButtonClicked:)];
+    
     //Spacer
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];    
     
@@ -46,7 +49,7 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     //Create new User Button
     UIBarButtonItem *newUserBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addUserButtonClicked:)];
     
-    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, newUserBtn, nil] animated:NO];
+    [self setToolbarItems:[NSArray arrayWithObjects:settingsBtn, spacer, toolBarTitle, spacer, newUserBtn, nil] animated:NO];
     
 }
 
@@ -136,6 +139,15 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 - (void)addUserButtonClicked:(id)sender
 {
     [self performSegueWithIdentifier:@"personAdd" sender:sender];
+}
+
+/**
+ Function called when the settings button is clicked
+ @param sender: The sender of the event
+ */
+- (void)settingsButtonClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"settingsSegue" sender:sender];
 }
 
 /**

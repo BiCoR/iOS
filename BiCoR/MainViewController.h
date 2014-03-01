@@ -52,6 +52,12 @@ extern NSString *const SETTINGS_PASSWORD_KEY;
 - (void)addUserButtonClicked:(id)sender;
 
 /**
+ Function called when the settings button is clicked
+ @param sender: The sender of the event
+ */
+- (void)settingsButtonClicked:(id)sender;
+
+/**
  Function to show the details view of one user
  @param userID: the user id as integer value
  */
