@@ -62,7 +62,7 @@
             notification.timeZone = [NSTimeZone localTimeZone];
             notification.applicationIconBadgeNumber = 1;
             notification.alertAction = nil;
-            notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"User %@ has Birthday", nil), [c getFullName]];
+            notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"%@ has birthday today", nil), [c getFullName]];
             notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:c.ID] forKey:@"USERID"];
             
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
