@@ -14,6 +14,7 @@
 //Constants
 extern NSString *const SERVER_CONNECTION_LOGIN_PAGE;
 extern NSString *const SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO;
+extern NSString *const SERVER_CONNECTION_LOGOUT_PAGE;
 extern NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER;
 extern NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY;
 extern NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE;
@@ -71,6 +72,11 @@ extern int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE;
  */
 - (void)performBackgroundLoginProcessWithDelegate:(NSObject *) delegate;
 
+/**
+ Function to perform the logut process on the server
+ @return: An integer error code or 0 if successfull
+ */
+- (int)performLogoutProcess;
 
 /**
  Function to load or reload all contact entrys

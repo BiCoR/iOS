@@ -12,10 +12,7 @@
 #import "PersonDetailsViewController.h"
 #import "WebViewController.h"
 #import "NSMutableArray+PersonManager.h"
-
-//Constants
-extern NSString *const SETTINGS_USERNAME_KEY;
-extern NSString *const SETTINGS_PASSWORD_KEY;
+#import "SettingsViewController.h"
 
 @interface MainViewController : UITableViewController <UIAlertViewDelegate, ServerConnectionInformation>
 

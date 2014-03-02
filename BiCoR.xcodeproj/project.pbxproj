@@ -123,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B5BE25B18C361EB004FA1B0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9B5853C218C26E7800075178 /* SettingsViewController.h */,
+				9B5853C318C26E7800075178 /* SettingsViewController.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		9B60CB9A1882CB00003A7A44 /* Server Communication */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,8 +269,7 @@
 				9B6AD553187F083900195217 /* MainViewController.m */,
 				9B87BFAF18B4EB0200351557 /* WebViewController.h */,
 				9B87BFB018B4EB0200351557 /* WebViewController.m */,
-				9B5853C218C26E7800075178 /* SettingsViewController.h */,
-				9B5853C318C26E7800075178 /* SettingsViewController.m */,
+				9B5BE25B18C361EB004FA1B0 /* Settings */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";

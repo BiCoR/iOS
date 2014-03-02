@@ -7,10 +7,12 @@
 //
 
 #import "ServerConnection.h"
+#import "SettingsViewController.h"
 
 //CONSTANTS
 NSString * const SERVER_CONNECTION_LOGIN_PAGE = @"/login.xml";
 NSString *const SERVER_CONNECTION_LOGIN_PAGE_STEP_TWO = @"/signin";
+NSString *const SERVER_CONNECTION_LOGOUT_PAGE = @"/signout";
 NSString *const SERVER_CONNECTION_ALL_PEOPLE_PAGE = @"/people.xml";
 NSString *const SERVER_CONNECTION_TOKEN_KEY_HEADER = @"x-csrf-token";
 NSString *const SERVER_CONNECTION_AUTHENTICATION_BODY = @"authenticity_token=\"%@\"&user[email]=%@&user[password]=%@";
@@ -37,7 +39,13 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     self = [super init];
     if (self)
     {
-        _url = @"https://quiet-crag-9089.herokuapp.com"; //TODO: Get URL from properties
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSString *serverUL = [userDefaults objectForKey:SETTINGS_URL_KEY];
+        if (serverUL == nil) {
+            serverUL = @"https://quiet-crag-9089.herokuapp.com";
+            [userDefaults setObject:serverUL forKey:SETTINGS_URL_KEY];
+        }
+        _url = serverUL;
         _logedIn = NO;
         _lockingClass = [[NSRecursiveLock alloc] init];
         _loadDataSecondTry = NO;
@@ -93,6 +101,16 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     //Lock the thread
     [_lockingClass lock];
 
+    //Check if a logout is needed
+    /////////////////////////////
+    if (_logedIn) {
+        if ([self performLogoutProcess]) {
+            if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
+                [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
+            }
+            return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
+        }
+    }
     
     //Generate the Request - Connection to login.xml
     ////////////////////////////////////////////////
@@ -195,6 +213,30 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     }
     
     _lastError = nil;
+    return 0;
+}
+
+/**
+ Function to perform the logut process on the server
+ @return: An integer error code or 0 if successfull
+ */
+- (int)performLogoutProcess
+{
+    NSURLResponse *response;
+    NSError *error;
+    
+    NSString *logoutURL = [_url stringByAppendingString:SERVER_CONNECTION_LOGOUT_PAGE];
+    
+    NSMutableURLRequest *requestLogOut = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:logoutURL]];
+    NSData *returnedData = [NSURLConnection sendSynchronousRequest:requestLogOut returningResponse:&response error:&error];
+    
+    if (!returnedData) {
+        NSLog(@"Connection error");
+        _lastError = SERVER_CONNECTION_COULD_NOT_REACH_SERVER;
+        [_lockingClass unlock];
+
+        return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
+    }
     return 0;
 }
 

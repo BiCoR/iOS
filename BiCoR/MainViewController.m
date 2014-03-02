@@ -9,10 +9,6 @@
 #import "MainViewController.h"
 #import "AppDelegate.h"
 
-//CONSTANTS
-NSString * const SETTINGS_USERNAME_KEY = @"USERNAME";
-NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
-
 @implementation MainViewController
 
 /**
@@ -82,6 +78,11 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self refreshView:self];
+}
+
 
 /**
  Function to fill the table view the first time
@@ -128,7 +129,12 @@ NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
  */
 - (void)refreshView:(id)sender {
     if (!_statusLoadingData) {
-        [self loadDataFirstTime];
+        
+        [self setStatusForLoadingData:YES];
+        
+        //Start Connection
+        ServerConnection *connection = [ServerConnection sharedServerConnection];
+        [connection loadPeopleDataBackgroundWithDelegate:self];
     }
 }
 

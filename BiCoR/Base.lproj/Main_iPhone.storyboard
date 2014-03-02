@@ -202,6 +202,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="passwordLabel" destination="UPa-Kv-poz" id="V5F-Gz-0Xw"/>
+                        <outlet property="saveButton" destination="3Mg-04-BNe" id="Z4a-E8-dUV"/>
                         <outlet property="serverURLLabel" destination="oT8-7z-Pb2" id="npu-uW-Ju4"/>
                         <outlet property="userNameLabel" destination="hQ2-xY-Uj2" id="ua6-fX-51p"/>
                     </connections>
@@ -213,7 +214,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="926" y="519"/>
+            <point key="canvasLocation" x="926" y="719"/>
         </scene>
         <!--Web View Controller - Edit Persons-->
         <scene sceneID="3lc-p2-W49">
