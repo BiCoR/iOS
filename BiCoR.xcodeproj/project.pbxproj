@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B142DA418BE538D00269A0A /* NSMutableArray+PersonManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B142DA318BE538D00269A0A /* NSMutableArray+PersonManager.m */; };
+		9B4CA46918C3A38700DD04F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CA46B18C3A38700DD04F2 /* Localizable.strings */; };
 		9B5853C418C26E7800075178 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5853C318C26E7800075178 /* SettingsViewController.m */; };
 		9B60CB9D1882CF49003A7A44 /* ServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CB9C1882CF49003A7A44 /* ServerConnection.m */; };
 		9B6AD554187F083900195217 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B6AD553187F083900195217 /* MainViewController.m */; };
@@ -50,6 +51,12 @@
 /* Begin PBXFileReference section */
 		9B142DA218BE538D00269A0A /* NSMutableArray+PersonManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+PersonManager.h"; sourceTree = "<group>"; };
 		9B142DA318BE538D00269A0A /* NSMutableArray+PersonManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+PersonManager.m"; sourceTree = "<group>"; };
+		9B4CA46318C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main_iPad.strings; sourceTree = "<group>"; };
+		9B4CA46418C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
+		9B4CA46518C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9B4CA46618C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9B4CA46A18C3A38700DD04F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B4CA46C18C3A38C00DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = file; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B5853C218C26E7800075178 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		9B5853C318C26E7800075178 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9B60CB9B1882CF49003A7A44 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConnection.h; path = "Server Communication/ServerConnection.h"; sourceTree = "<group>"; };
@@ -229,6 +236,7 @@
 				9B8AB51C187EE39A0090757F /* InfoPlist.strings */,
 				9B8AB51F187EE39A0090757F /* main.m */,
 				9B8AB521187EE39B0090757F /* BiCoR-Prefix.pch */,
+				9B4CA46B18C3A38700DD04F2 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -368,6 +376,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 9B8AB507187EE39A0090757F;
 			productRefGroup = 9B8AB511187EE39A0090757F /* Products */;
@@ -385,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B4CA46918C3A38700DD04F2 /* Localizable.strings in Resources */,
 				9B8AB52A187EE39B0090757F /* Main_iPad.storyboard in Resources */,
 				9B8AB52F187EE39B0090757F /* Images.xcassets in Resources */,
 				9B8AB527187EE39B0090757F /* Main_iPhone.storyboard in Resources */,
@@ -445,10 +455,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		9B4CA46B18C3A38700DD04F2 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9B4CA46A18C3A38700DD04F2 /* Base */,
+				9B4CA46C18C3A38C00DD04F2 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		9B8AB51C187EE39A0090757F /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				9B8AB51D187EE39A0090757F /* en */,
+				9B4CA46518C3A34100DD04F2 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -457,6 +477,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B8AB526187EE39B0090757F /* Base */,
+				9B4CA46418C3A34100DD04F2 /* de */,
 			);
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -465,6 +486,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B8AB529187EE39B0090757F /* Base */,
+				9B4CA46318C3A34100DD04F2 /* de */,
 			);
 			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
@@ -473,6 +495,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9B8AB53F187EE39B0090757F /* en */,
+				9B4CA46618C3A34100DD04F2 /* de */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -559,13 +582,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiCoR/BiCoR-Prefix.pch";
 				INFOPLIST_FILE = "BiCoR/BiCoR-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C54B413-7516-495E-87EB-A74CAE2EC5C8";
+				PROVISIONING_PROFILE = "73113609-DE5B-4E67-AA2F-05CB29BECA22";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -575,13 +598,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiCoR/BiCoR-Prefix.pch";
 				INFOPLIST_FILE = "BiCoR/BiCoR-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7C54B413-7516-495E-87EB-A74CAE2EC5C8";
+				PROVISIONING_PROFILE = "73113609-DE5B-4E67-AA2F-05CB29BECA22";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

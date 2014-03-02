@@ -104,7 +104,7 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     //Check if a logout is needed
     /////////////////////////////
     if (_logedIn) {
-        if ([self performLogoutProcess]) {
+        if ([self performLogoutProcess] != 0) {
             if([delegate respondsToSelector:@selector(serverConnectionCouldNotReachTheServer:)]) {
                 [delegate performSelectorOnMainThread:@selector(serverConnectionCouldNotReachTheServer:) withObject:self waitUntilDone:NO];
             }
@@ -228,6 +228,8 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
     NSString *logoutURL = [_url stringByAppendingString:SERVER_CONNECTION_LOGOUT_PAGE];
     
     NSMutableURLRequest *requestLogOut = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:logoutURL]];
+    [requestLogOut addValue:_authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
+    
     NSData *returnedData = [NSURLConnection sendSynchronousRequest:requestLogOut returningResponse:&response error:&error];
     
     if (!returnedData) {
@@ -237,6 +239,7 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
 
         return SERVER_CONNECTION_COULD_NOT_REACH_SERVER_CODE;
     }
+    _logedIn = NO;
     return 0;
 }
 
@@ -327,7 +330,18 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
             [_lockingClass unlock];
             return SERVER_CONNECTION_LOGIN_FAILED_CODE;
         } else {
-            if (![self performLoginProcessWithDelegate:nil]) {
+            //Call the server to get the right Redirect URL
+            NSString *dataUrl = [_url stringByAppendingString:[_userPartOfUrl stringByAppendingString:SERVER_CONNECTION_ALL_PEOPLE_PAGE_WEB]];
+            
+            NSMutableURLRequest *requestData = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:dataUrl]];
+            
+            [requestData addValue:_authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
+            
+            returnedData = [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&error];
+            
+            //Try to login
+            
+            if ([self performLoginProcessWithDelegate:nil] != 0) {
                 _lastError = SERVER_CONNECTION_LOGIN_FAILED;
                 
                 [_lockingClass unlock];

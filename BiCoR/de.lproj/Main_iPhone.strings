@@ -1,0 +1,63 @@
+
+/* Class = "IBUINavigationItem"; title = "Edit Persons"; ObjectID = "0gM-Xr-fpd"; */
+"0gM-Xr-fpd.title" = "Person bearbeiten";
+
+/* Class = "IBUILabel"; text = "Password:"; ObjectID = "1UK-2i-pcE"; */
+"1UK-2i-pcE.text" = "Passwort:";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "1mr-vC-hxr"; */
+"1mr-vC-hxr.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "5ry-HC-Tjl"; */
+"5ry-HC-Tjl.text" = "Title";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "D43-oS-j7N"; */
+"D43-oS-j7N.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Server-URL:"; ObjectID = "DY9-yn-rcZ"; */
+"DY9-yn-rcZ.text" = "Server-URL:";
+
+/* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "G6m-xZ-7Hz"; */
+"G6m-xZ-7Hz.title" = "Zurück";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "MCw-Pd-A8P"; */
+"MCw-Pd-A8P.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "MGs-Ul-Ijy"; */
+"MGs-Ul-Ijy.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Username:"; ObjectID = "Nf4-lr-gYM"; */
+"Nf4-lr-gYM.text" = "Nutzername:";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "WIY-XN-kIB"; */
+"WIY-XN-kIB.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "XUz-8D-XRD"; */
+"XUz-8D-XRD.text" = "Label";
+
+/* Class = "IBUINavigationItem"; title = "Person Details"; ObjectID = "fKA-fm-eWj"; */
+"fKA-fm-eWj.title" = "Person Details";
+
+/* Class = "IBUINavigationItem"; title = "BiCoR"; ObjectID = "id2-S1-Ppt"; */
+"id2-S1-Ppt.title" = "BiCoR";
+
+/* Class = "IBUIBarButtonItem"; title = "Edit"; ObjectID = "jwM-PN-hsU"; */
+"jwM-PN-hsU.title" = "Bearbeiten";
+
+/* Class = "IBUINavigationItem"; title = "Settings"; ObjectID = "mUb-Yx-2dN"; */
+"mUb-Yx-2dN.title" = "Einstellungen";
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "n2I-kp-8BP"; */
+"n2I-kp-8BP.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "nkC-wo-DO0"; */
+"nkC-wo-DO0.text" = "Details";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Connection Settings"; ObjectID = "s7b-VV-dIM"; */
+"s7b-VV-dIM.headerTitle" = "Verbindungseinstellungen";
+
+/* Class = "IBUIBarButtonItem"; title = "Edit"; ObjectID = "sxw-UL-XCi"; */
+"sxw-UL-XCi.title" = "Bearbeiten";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Account Settings"; ObjectID = "tOZ-Eb-4bv"; */
+"tOZ-Eb-4bv.headerTitle" = "Benutzereinstellungen";

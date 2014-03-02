@@ -67,6 +67,7 @@
     
     //Check if userName / Password allready exists
     if ((userName == nil) || (password == nil)) {
+        [self setStatusForLoadingData:YES];
         UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE", @"title for login credentials") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:nil, nil];
         dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
         [dataAlert show];

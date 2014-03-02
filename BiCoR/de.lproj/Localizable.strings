@@ -1,0 +1,77 @@
+/*
+ Localizable.strings
+ BiCoR
+ 
+ Created by Markus Hinkelmann on 02.03.14.
+ Copyright (c) 2014 Markus Hinkelmann. All rights reserved.
+ */
+
+/* No comment provided by engineer. */
+"%@ has birthday today" = "%@ hat heute Geburtstag";
+
+/* No comment provided by engineer. */
+"Cancel" = "Abbrechen";
+
+/* No comment provided by engineer. */
+"Check entered information" = "Eingegebene Daten werden überprüft";
+
+/* ok button */
+"ENTER_LOGIN_CREDENTIALS_OK" = "OK";
+
+/* text for login credentials */
+"ENTER_LOGIN_CREDENTIALS_TEXT" = "Bitte Benutzername und Passwort eingeben";
+
+/* title for login credentials */
+"ENTER_LOGIN_CREDENTIALS_TITLE" = "Benutzername / Passwort fehlt";
+
+/* title for login credentials failed */
+"ENTER_LOGIN_CREDENTIALS_TITLE_FAILED" = "Benutzer / Passwort sind ungeültig";
+
+/* No comment provided by engineer. */
+"Load Data" = "Aktualisieren";
+
+/* ok button */
+"OK_BUTTON" = "OK";
+
+/* title for reach Server failed */
+"REACH_SERVER_FAILED" = "Server kann nicht erreicht werden";
+
+/* unknown error occoured */
+"SERVER_UNKNOWN_ERROR" = "Unbekannter Fehler";
+
+/* No comment provided by engineer. */
+"Settings" = "Einstellungen";
+
+/* text for reach Server failed */
+"SETTINGS_COULDNT_REACH_SERVER_TEXT" = "Sever antwortet nicht.
+Bitte eingebene Adresse überprüfen";
+
+/* title for wrong username / passwd */
+"SETTINGS_LOGIN_INFORMATION_WRONG" = "Login fehlgeschlagen";
+
+/* text for wrong username / passwd */
+"SETTINGS_LOGIN_INFORMATION_WRONG_TEXT" = "Benutzername / Password ist ungültig";
+
+/* No comment provided by engineer. */
+"Age" = "Alter";
+
+/* No comment provided by engineer. */
+"Birthday" = "Geburtstag";
+
+/* No comment provided by engineer. */
+"Landline Phone" = "Telefon";
+
+/* No comment provided by engineer. */
+"Mail" = "Mail";
+
+/* No comment provided by engineer. */
+"Mobile Phone" = "Handy";
+
+/* Constants for Connection errors */
+"SERVER_CONNECTION_LOGIN_FAILED" = "Login fehlgeschlagen.
+Entweder Benutzername oder Passwort ist ungültig.";
+"SERVER_CONNECTION_COULD_NOT_REACH_SERVER" = "Server antwortet nicht.
+Bitte Netzwerkverbindung überprüfen.";
+"SERVER_CONNECTION_UNKNOWN_ERROR" = "Ein unbekannter Fehler ist aufgetreten.
+Bitte wende dich an den Support wen der Fehler weiterhin besteht.";
+
