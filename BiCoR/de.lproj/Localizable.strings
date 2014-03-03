@@ -50,7 +50,7 @@ Bitte eingebene Adresse überprüfen";
 "SETTINGS_LOGIN_INFORMATION_WRONG" = "Login fehlgeschlagen";
 
 /* text for wrong username / passwd */
-"SETTINGS_LOGIN_INFORMATION_WRONG_TEXT" = "Benutzername / Password ist ungültig";
+"SETTINGS_LOGIN_INFORMATION_WRONG_TEXT" = "Benutzername / Passwort ist ungültig";
 
 /* No comment provided by engineer. */
 "Age" = "Alter";
@@ -62,7 +62,7 @@ Bitte eingebene Adresse überprüfen";
 "Landline Phone" = "Telefon";
 
 /* No comment provided by engineer. */
-"Mail" = "Mail";
+"Mail" = "E-Mail";
 
 /* No comment provided by engineer. */
 "Mobile Phone" = "Handy";
