@@ -3,7 +3,7 @@
 //  BiCoRTests
 //
 //  Created by Markus Hinkelmann on 09.01.14.
-//  Copyright (c) 2014 Markus Hinkelmann. All rights reserved.
+//  Released under the GNU General Public License v2
 //
 
 #import <XCTest/XCTest.h>
