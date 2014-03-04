@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
-               BuildableName = "BiCoR.app"
+               BuildableName = "BiCoRem.app"
                BlueprintName = "BiCoRem"
                ReferencedContainer = "container:BiCoRem.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B8AB533187EE39B0090757F"
-               BuildableName = "BiCoRTests.xctest"
+               BuildableName = "BiCoRemTests.xctest"
                BlueprintName = "BiCoRemTests"
                ReferencedContainer = "container:BiCoRem.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
-            BuildableName = "BiCoR.app"
+            BuildableName = "BiCoRem.app"
             BlueprintName = "BiCoRem"
             ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
-            BuildableName = "BiCoR.app"
+            BuildableName = "BiCoRem.app"
             BlueprintName = "BiCoRem"
             ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
-            BuildableName = "BiCoR.app"
+            BuildableName = "BiCoRem.app"
             BlueprintName = "BiCoRem"
             ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>

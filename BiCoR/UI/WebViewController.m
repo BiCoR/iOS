@@ -22,6 +22,7 @@ int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
     [super viewDidLoad];
     
     self.navigationController.toolbarHidden = YES;
+    _loadCounter = 0;
     
     //Prepate the Connection
     
@@ -81,6 +82,10 @@ int const WEB_VIEW_CONTROLLER_EDIT_USER = 2;
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_activityIndicator stopAnimating];
+    _loadCounter++;
+    if ((_actionType != WEB_VIEW_CONTROLLER_MANAGE_USERS) && (_loadCounter >= 2)) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end
