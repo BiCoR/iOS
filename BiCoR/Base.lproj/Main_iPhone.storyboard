@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller - BiCoR-->
+        <!--Main View Controller - BiCoRem-->
         <scene sceneID="I9r-qR-nP6">
             <objects>
                 <tableViewController id="Vsa-5I-4Km" customClass="MainViewController" sceneMemberID="viewController">
@@ -48,7 +48,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="BiCoR" id="id2-S1-Ppt">
+                    <navigationItem key="navigationItem" title="BiCoRem" id="id2-S1-Ppt">
                         <barButtonItem key="backBarButtonItem" title="Back" id="G6m-xZ-7Hz"/>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="jwM-PN-hsU">
                             <connections>

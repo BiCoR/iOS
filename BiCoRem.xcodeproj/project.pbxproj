@@ -55,8 +55,8 @@
 		9B4CA46418C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main_iPhone.strings; sourceTree = "<group>"; };
 		9B4CA46518C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B4CA46618C3A34100DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		9B4CA46A18C3A38700DD04F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9B4CA46C18C3A38C00DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = file; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B4CA46A18C3A38700DD04F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		9B4CA46C18C3A38C00DD04F2 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9B5853C218C26E7800075178 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		9B5853C318C26E7800075178 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		9B60CB9B1882CF49003A7A44 /* ServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerConnection.h; path = "Server Communication/ServerConnection.h"; sourceTree = "<group>"; };
@@ -71,22 +71,22 @@
 		9B8967E21880259B00520BE6 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
 		9B89F2E318B01A0C009E4455 /* PersonDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PersonDetailsViewController.h; path = UI/PersonDetailsViewController.h; sourceTree = "<group>"; };
 		9B89F2E418B01A0C009E4455 /* PersonDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PersonDetailsViewController.m; path = UI/PersonDetailsViewController.m; sourceTree = "<group>"; };
-		9B8AB510187EE39A0090757F /* BiCoR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiCoR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8AB510187EE39A0090757F /* BiCoRem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiCoRem.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8AB513187EE39A0090757F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B8AB515187EE39A0090757F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9B8AB517187EE39A0090757F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9B8AB51B187EE39A0090757F /* BiCoR-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoR-Info.plist"; sourceTree = "<group>"; };
+		9B8AB51B187EE39A0090757F /* BiCoRem-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRem-Info.plist"; sourceTree = "<group>"; };
 		9B8AB51D187EE39A0090757F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8AB51F187EE39A0090757F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9B8AB521187EE39B0090757F /* BiCoR-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiCoR-Prefix.pch"; sourceTree = "<group>"; };
+		9B8AB521187EE39B0090757F /* BiCoRem-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiCoRem-Prefix.pch"; sourceTree = "<group>"; };
 		9B8AB522187EE39B0090757F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B8AB523187EE39B0090757F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9B8AB526187EE39B0090757F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		9B8AB529187EE39B0090757F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		9B8AB52E187EE39B0090757F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9B8AB534187EE39B0090757F /* BiCoRTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiCoRTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B8AB534187EE39B0090757F /* BiCoRemTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiCoRemTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B8AB535187EE39B0090757F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9B8AB53D187EE39B0090757F /* BiCoRTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRTests-Info.plist"; sourceTree = "<group>"; };
+		9B8AB53D187EE39B0090757F /* BiCoRemTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiCoRemTests-Info.plist"; sourceTree = "<group>"; };
 		9B8AB53F187EE39B0090757F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8AB541187EE39B0090757F /* BiCoRTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiCoRTests.m; sourceTree = "<group>"; };
 		9B9A587318B0DABE008498F6 /* DataCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCell.h; path = UI/TableCells/DataCell.h; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 		9B8AB511187EE39A0090757F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B8AB510187EE39A0090757F /* BiCoR.app */,
-				9B8AB534187EE39B0090757F /* BiCoRTests.xctest */,
+				9B8AB510187EE39A0090757F /* BiCoRem.app */,
+				9B8AB534187EE39B0090757F /* BiCoRemTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -232,10 +232,10 @@
 		9B8AB51A187EE39A0090757F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9B8AB51B187EE39A0090757F /* BiCoR-Info.plist */,
+				9B8AB51B187EE39A0090757F /* BiCoRem-Info.plist */,
 				9B8AB51C187EE39A0090757F /* InfoPlist.strings */,
 				9B8AB51F187EE39A0090757F /* main.m */,
-				9B8AB521187EE39B0090757F /* BiCoR-Prefix.pch */,
+				9B8AB521187EE39B0090757F /* BiCoRem-Prefix.pch */,
 				9B4CA46B18C3A38700DD04F2 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
@@ -253,7 +253,7 @@
 		9B8AB53C187EE39B0090757F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9B8AB53D187EE39B0090757F /* BiCoRTests-Info.plist */,
+				9B8AB53D187EE39B0090757F /* BiCoRemTests-Info.plist */,
 				9B8AB53E187EE39B0090757F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -317,9 +317,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B8AB50F187EE39A0090757F /* BiCoR */ = {
+		9B8AB50F187EE39A0090757F /* BiCoRem */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B8AB545187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoR" */;
+			buildConfigurationList = 9B8AB545187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRem" */;
 			buildPhases = (
 				9B8AB50C187EE39A0090757F /* Sources */,
 				9B8AB50D187EE39A0090757F /* Frameworks */,
@@ -329,14 +329,14 @@
 			);
 			dependencies = (
 			);
-			name = BiCoR;
+			name = BiCoRem;
 			productName = BiCoR;
-			productReference = 9B8AB510187EE39A0090757F /* BiCoR.app */;
+			productReference = 9B8AB510187EE39A0090757F /* BiCoRem.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9B8AB533187EE39B0090757F /* BiCoRTests */ = {
+		9B8AB533187EE39B0090757F /* BiCoRemTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B8AB548187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRTests" */;
+			buildConfigurationList = 9B8AB548187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRemTests" */;
 			buildPhases = (
 				9B8AB530187EE39B0090757F /* Sources */,
 				9B8AB531187EE39B0090757F /* Frameworks */,
@@ -347,9 +347,9 @@
 			dependencies = (
 				9B8AB53A187EE39B0090757F /* PBXTargetDependency */,
 			);
-			name = BiCoRTests;
+			name = BiCoRemTests;
 			productName = BiCoRTests;
-			productReference = 9B8AB534187EE39B0090757F /* BiCoRTests.xctest */;
+			productReference = 9B8AB534187EE39B0090757F /* BiCoRemTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -369,7 +369,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B8AB50B187EE39A0090757F /* Build configuration list for PBXProject "BiCoR" */;
+			buildConfigurationList = 9B8AB50B187EE39A0090757F /* Build configuration list for PBXProject "BiCoRem" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -383,8 +383,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B8AB50F187EE39A0090757F /* BiCoR */,
-				9B8AB533187EE39B0090757F /* BiCoRTests */,
+				9B8AB50F187EE39A0090757F /* BiCoRem */,
+				9B8AB533187EE39B0090757F /* BiCoRemTests */,
 			);
 		};
 /* End PBXProject section */
@@ -449,7 +449,7 @@
 /* Begin PBXTargetDependency section */
 		9B8AB53A187EE39B0090757F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9B8AB50F187EE39A0090757F /* BiCoR */;
+			target = 9B8AB50F187EE39A0090757F /* BiCoRem */;
 			targetProxy = 9B8AB539187EE39B0090757F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -585,9 +585,9 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BiCoR/BiCoR-Prefix.pch";
-				INFOPLIST_FILE = "BiCoR/BiCoR-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BiCoR/BiCoRem-Prefix.pch";
+				INFOPLIST_FILE = "BiCoR/BiCoRem-Info.plist";
+				PRODUCT_NAME = BiCoRem;
 				PROVISIONING_PROFILE = "73113609-DE5B-4E67-AA2F-05CB29BECA22";
 				WRAPPER_EXTENSION = app;
 			};
@@ -601,9 +601,9 @@
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BiCoR/BiCoR-Prefix.pch";
-				INFOPLIST_FILE = "BiCoR/BiCoR-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "BiCoR/BiCoRem-Prefix.pch";
+				INFOPLIST_FILE = "BiCoR/BiCoRem-Info.plist";
+				PRODUCT_NAME = BiCoRem;
 				PROVISIONING_PROFILE = "73113609-DE5B-4E67-AA2F-05CB29BECA22";
 				WRAPPER_EXTENSION = app;
 			};
@@ -625,8 +625,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BiCoRTests/BiCoRTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BiCoRTests/BiCoRemTests-Info.plist";
+				PRODUCT_NAME = BiCoRemTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -644,8 +644,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiCoR/BiCoR-Prefix.pch";
-				INFOPLIST_FILE = "BiCoRTests/BiCoRTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "BiCoRTests/BiCoRemTests-Info.plist";
+				PRODUCT_NAME = BiCoRemTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -654,7 +654,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B8AB50B187EE39A0090757F /* Build configuration list for PBXProject "BiCoR" */ = {
+		9B8AB50B187EE39A0090757F /* Build configuration list for PBXProject "BiCoRem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B8AB543187EE39B0090757F /* Debug */,
@@ -663,7 +663,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B8AB545187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoR" */ = {
+		9B8AB545187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRem" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B8AB546187EE39B0090757F /* Debug */,
@@ -672,7 +672,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B8AB548187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRTests" */ = {
+		9B8AB548187EE39B0090757F /* Build configuration list for PBXNativeTarget "BiCoRemTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B8AB549187EE39B0090757F /* Debug */,

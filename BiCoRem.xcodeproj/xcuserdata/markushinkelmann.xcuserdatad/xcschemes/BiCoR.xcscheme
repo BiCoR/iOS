@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
                BuildableName = "BiCoR.app"
-               BlueprintName = "BiCoR"
-               ReferencedContainer = "container:BiCoR.xcodeproj">
+               BlueprintName = "BiCoRem"
+               ReferencedContainer = "container:BiCoRem.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B8AB533187EE39B0090757F"
                BuildableName = "BiCoRTests.xctest"
-               BlueprintName = "BiCoRTests"
-               ReferencedContainer = "container:BiCoR.xcodeproj">
+               BlueprintName = "BiCoRemTests"
+               ReferencedContainer = "container:BiCoRem.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
             BuildableName = "BiCoR.app"
-            BlueprintName = "BiCoR"
-            ReferencedContainer = "container:BiCoR.xcodeproj">
+            BlueprintName = "BiCoRem"
+            ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
             BuildableName = "BiCoR.app"
-            BlueprintName = "BiCoR"
-            ReferencedContainer = "container:BiCoR.xcodeproj">
+            BlueprintName = "BiCoRem"
+            ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B8AB50F187EE39A0090757F"
             BuildableName = "BiCoR.app"
-            BlueprintName = "BiCoR"
-            ReferencedContainer = "container:BiCoR.xcodeproj">
+            BlueprintName = "BiCoRem"
+            ReferencedContainer = "container:BiCoRem.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
