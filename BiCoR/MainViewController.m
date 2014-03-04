@@ -284,6 +284,21 @@
         cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.623529 blue:0.364706 alpha:1.0];
         cell.imageView.image = [UIImage imageNamed:@"BirthdayImage"];
     }
+    else
+    {
+        NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
+        dateFormatterMonth.dateFormat =  @"MMdd";
+        dateFormatterMonth.timeZone = [NSTimeZone localTimeZone];
+        NSInteger currentValue = [[dateFormatterMonth stringFromDate:[[NSDate alloc] init] ] integerValue];
+        NSInteger result = c.sortValue - currentValue;
+        
+        if ((result < 5) && (result >0)) {
+            cell.textLabel.textColor = [UIColor redColor];
+        } else if((result < 30)  && (result >0)) {
+            cell.textLabel.textColor = [UIColor orangeColor];
+        }
+    }
+    
     
     return cell;
 }

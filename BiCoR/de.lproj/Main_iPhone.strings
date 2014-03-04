@@ -61,3 +61,6 @@
 
 /* Class = "IBUITableViewSection"; headerTitle = "Account Settings"; ObjectID = "tOZ-Eb-4bv"; */
 "tOZ-Eb-4bv.headerTitle" = "Benutzereinstellungen";
+
+/* The about button in the Settings dialog */
+"4re-5D-mT7.title" = "Über";
