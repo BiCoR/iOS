@@ -14,6 +14,8 @@
 extern NSString *const SETTINGS_USERNAME_KEY;
 extern NSString *const SETTINGS_PASSWORD_KEY;
 extern NSString *const SETTINGS_URL_KEY;
+extern NSString *const SETTINGS_FIRST_WARNING_TIME_KEY;
+extern NSString *const SETTINGS_SECOND_WARNING_TIME_KEY;
 
 @interface SettingsViewController : UITableViewController <UITextFieldDelegate, ServerConnectionInformation>
 
@@ -22,6 +24,8 @@ extern NSString *const SETTINGS_URL_KEY;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
 @property (weak, nonatomic) IBOutlet UITextField *serverURLLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
+@property (weak, nonatomic) IBOutlet UITextField *firstWarningLabel;
+@property (weak, nonatomic) IBOutlet UITextField *secondWarningLabel;
 
 @property UILabel *statusLabel;
 
@@ -54,5 +58,11 @@ extern NSString *const SETTINGS_URL_KEY;
  @param sender: The sender, which calls the event
  */
 - (IBAction)tapInsideTableView:(id)sender;
+
+/**
+ Function called, when the about button is clicked
+ @param sender: The sender, which calls the event
+ */
+- (void) aboutButtonClicked:(id)sender;
 
 @end

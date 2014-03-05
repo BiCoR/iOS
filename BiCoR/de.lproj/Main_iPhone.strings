@@ -15,7 +15,7 @@
 "D43-oS-j7N.text" = "Label";
 
 /* Class = "IBUILabel"; text = "Server-URL:"; ObjectID = "DY9-yn-rcZ"; */
-"DY9-yn-rcZ.text" = "Server-URL:";
+"npr-Q4-Tq2.text" = "Server-URL:";
 
 /* Class = "IBUIBarButtonItem"; title = "Back"; ObjectID = "G6m-xZ-7Hz"; */
 "G6m-xZ-7Hz.title" = "Zurück";
@@ -54,7 +54,7 @@
 "nkC-wo-DO0.text" = "Details";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Connection Settings"; ObjectID = "s7b-VV-dIM"; */
-"s7b-VV-dIM.headerTitle" = "Verbindungseinstellungen";
+"QU5-Ks-gvK.headerTitle" = "Verbindungseinstellungen";
 
 /* Class = "IBUIBarButtonItem"; title = "Edit"; ObjectID = "sxw-UL-XCi"; */
 "sxw-UL-XCi.title" = "Bearbeiten";
@@ -63,4 +63,17 @@
 "tOZ-Eb-4bv.headerTitle" = "Benutzereinstellungen";
 
 /* The about button in the Settings dialog */
-"4re-5D-mT7.title" = "Über";
+"4re-5D-mT7.normalTitle" = "Über";
+
+/* The about title in the title bar */
+"5fo-ez-TJf.title" = "Über";
+
+/* The about title in the title bar */
+"AkJ-ZT-W8Y.title" = "Zurück";
+
+/* The User Settings in the Settings Dialog */
+"s7b-VV-dIM.headerTitle" = "Nutzer vor dem Geburtstag markieren (in Tagen)";
+
+/* The 2 Information Fields */
+"DY9-yn-rcZ.title" = "1. Information";
+"UQq-e8-BXX.title" = "2. Information";

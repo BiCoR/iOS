@@ -75,3 +75,5 @@ Bitte Netzwerkverbindung überprüfen.";
 "SERVER_CONNECTION_UNKNOWN_ERROR" = "Ein unbekannter Fehler ist aufgetreten.
 Bitte wende dich an den Support wen der Fehler weiterhin besteht.";
 
+/* About Button */
+"About" = "Über";

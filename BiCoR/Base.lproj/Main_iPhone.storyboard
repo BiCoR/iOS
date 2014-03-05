@@ -75,19 +75,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4re-5D-mT7">
-                            <rect key="frame" x="0.0" y="309" width="320" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="About"/>
-                            <connections>
-                                <segue destination="FBq-G1-Fua" kind="push" id="kPn-5G-IMe"/>
-                            </connections>
-                        </button>
                         <sections>
+                            <tableViewSection headerTitle="Mark users before Birthday (days)" id="s7b-VV-dIM">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iJQ-aA-v30">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iJQ-aA-v30" id="EdB-zD-g5I">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="1. Information:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-yn-rcZ">
+                                                    <rect key="frame" x="20" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="64" horizontalCompressionResistancePriority="441" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-7z-Pb2">
+                                                    <rect key="frame" x="128" y="7" width="172" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
+                                                </textField>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Cb-Xf-CEY">
+                                                    <rect key="frame" x="128" y="7" width="172" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7Cb-Xf-CEY" firstAttribute="bottom" secondItem="oT8-7z-Pb2" secondAttribute="bottom" id="2AU-c4-yxn"/>
+                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="top" secondItem="EdB-zD-g5I" secondAttribute="top" constant="11" id="DXw-Ee-Eua"/>
+                                                <constraint firstItem="7Cb-Xf-CEY" firstAttribute="trailing" secondItem="oT8-7z-Pb2" secondAttribute="trailing" id="MA2-0M-dqm"/>
+                                                <constraint firstItem="oT8-7z-Pb2" firstAttribute="leading" secondItem="DY9-yn-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="N46-sM-Fkq"/>
+                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="leading" secondItem="EdB-zD-g5I" secondAttribute="leading" constant="20" symbolic="YES" id="SFM-B3-aae"/>
+                                                <constraint firstItem="7Cb-Xf-CEY" firstAttribute="leading" secondItem="DY9-yn-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="fCa-kY-mbB"/>
+                                                <constraint firstItem="oT8-7z-Pb2" firstAttribute="top" secondItem="EdB-zD-g5I" secondAttribute="top" constant="7" id="jF4-1s-pp9"/>
+                                                <constraint firstAttribute="bottom" secondItem="oT8-7z-Pb2" secondAttribute="bottom" constant="6" id="pRN-EX-5h7"/>
+                                                <constraint firstAttribute="trailing" secondItem="oT8-7z-Pb2" secondAttribute="trailing" constant="20" symbolic="YES" id="rF7-68-OXJ"/>
+                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="centerY" secondItem="EdB-zD-g5I" secondAttribute="centerY" id="rQ0-u0-rDM"/>
+                                                <constraint firstItem="7Cb-Xf-CEY" firstAttribute="baseline" secondItem="oT8-7z-Pb2" secondAttribute="baseline" id="z9I-8L-KZL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nfU-cp-tE1">
+                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nfU-cp-tE1" id="YUI-3V-dte">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="2. Information:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UQq-e8-BXX">
+                                                    <rect key="frame" x="20" y="11" width="100" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1yS-SY-OUO">
+                                                    <rect key="frame" x="128" y="7" width="172" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UQq-e8-BXX" firstAttribute="centerY" secondItem="YUI-3V-dte" secondAttribute="centerY" id="20a-W7-bRf"/>
+                                                <constraint firstAttribute="bottom" secondItem="1yS-SY-OUO" secondAttribute="bottom" constant="6" id="5FP-pb-3TT"/>
+                                                <constraint firstItem="1yS-SY-OUO" firstAttribute="leading" secondItem="UQq-e8-BXX" secondAttribute="trailing" constant="8" symbolic="YES" id="9G1-dt-OE0"/>
+                                                <constraint firstItem="UQq-e8-BXX" firstAttribute="leading" secondItem="YUI-3V-dte" secondAttribute="leading" constant="20" symbolic="YES" id="FAv-N8-XzX"/>
+                                                <constraint firstItem="UQq-e8-BXX" firstAttribute="top" secondItem="YUI-3V-dte" secondAttribute="top" constant="11" id="M7X-Ib-Aw9"/>
+                                                <constraint firstItem="1yS-SY-OUO" firstAttribute="top" secondItem="YUI-3V-dte" secondAttribute="top" constant="7" id="PjG-aJ-usu"/>
+                                                <constraint firstAttribute="trailing" secondItem="1yS-SY-OUO" secondAttribute="trailing" constant="20" symbolic="YES" id="jTS-oD-lr4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Account Settings" id="tOZ-Eb-4bv">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="TBv-pJ-IZW">
-                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="255" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TBv-pJ-IZW" id="jc5-5h-cfB">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -121,7 +189,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GRr-k8-TTa">
-                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="299" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GRr-k8-TTa" id="qLo-FK-w0Y">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -156,39 +224,39 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Connection Settings" id="s7b-VV-dIM">
+                            <tableViewSection headerTitle="Connection Settings" id="QU5-Ks-gvK">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iJQ-aA-v30">
-                                        <rect key="frame" x="0.0" y="255" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="nZB-jm-7YO">
+                                        <rect key="frame" x="0.0" y="391" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iJQ-aA-v30" id="EdB-zD-g5I">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nZB-jm-7YO" id="bUe-Tu-s6g">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Server-URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-yn-rcZ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Server-URL:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="npr-Q4-Tq2">
                                                     <rect key="frame" x="20" y="11" width="84" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="64" horizontalCompressionResistancePriority="441" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oT8-7z-Pb2">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="64" horizontalCompressionResistancePriority="441" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w28-lU-c36">
                                                     <rect key="frame" x="112" y="7" width="188" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="ph0-kI-Ipo" id="qWY-mX-upN"/>
+                                                        <outlet property="delegate" destination="ph0-kI-Ipo" id="Eb4-dW-37N"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="top" secondItem="EdB-zD-g5I" secondAttribute="top" constant="11" id="DXw-Ee-Eua"/>
-                                                <constraint firstItem="oT8-7z-Pb2" firstAttribute="leading" secondItem="DY9-yn-rcZ" secondAttribute="trailing" constant="8" symbolic="YES" id="N46-sM-Fkq"/>
-                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="leading" secondItem="EdB-zD-g5I" secondAttribute="leading" constant="20" symbolic="YES" id="SFM-B3-aae"/>
-                                                <constraint firstItem="oT8-7z-Pb2" firstAttribute="top" secondItem="EdB-zD-g5I" secondAttribute="top" constant="7" id="jF4-1s-pp9"/>
-                                                <constraint firstAttribute="bottom" secondItem="oT8-7z-Pb2" secondAttribute="bottom" constant="6" id="pRN-EX-5h7"/>
-                                                <constraint firstAttribute="trailing" secondItem="oT8-7z-Pb2" secondAttribute="trailing" constant="20" symbolic="YES" id="rF7-68-OXJ"/>
-                                                <constraint firstItem="DY9-yn-rcZ" firstAttribute="centerY" secondItem="EdB-zD-g5I" secondAttribute="centerY" id="rQ0-u0-rDM"/>
+                                                <constraint firstItem="npr-Q4-Tq2" firstAttribute="centerY" secondItem="bUe-Tu-s6g" secondAttribute="centerY" id="4wB-V2-tJi"/>
+                                                <constraint firstItem="w28-lU-c36" firstAttribute="leading" secondItem="npr-Q4-Tq2" secondAttribute="trailing" constant="8" symbolic="YES" id="8tE-aF-oba"/>
+                                                <constraint firstItem="w28-lU-c36" firstAttribute="top" secondItem="bUe-Tu-s6g" secondAttribute="top" constant="7" id="9aR-Nv-7yZ"/>
+                                                <constraint firstItem="npr-Q4-Tq2" firstAttribute="top" secondItem="bUe-Tu-s6g" secondAttribute="top" constant="11" id="IG8-vj-yK7"/>
+                                                <constraint firstAttribute="bottom" secondItem="w28-lU-c36" secondAttribute="bottom" constant="6" id="TFT-0D-Xk2"/>
+                                                <constraint firstAttribute="trailing" secondItem="w28-lU-c36" secondAttribute="trailing" constant="20" symbolic="YES" id="ktC-Sd-SiP"/>
+                                                <constraint firstItem="npr-Q4-Tq2" firstAttribute="leading" secondItem="bUe-Tu-s6g" secondAttribute="leading" constant="20" symbolic="YES" id="ukX-fi-m2H"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -211,10 +279,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="firstWarningLabel" destination="7Cb-Xf-CEY" id="fHg-wx-yOR"/>
                         <outlet property="passwordLabel" destination="UPa-Kv-poz" id="V5F-Gz-0Xw"/>
                         <outlet property="saveButton" destination="3Mg-04-BNe" id="Z4a-E8-dUV"/>
-                        <outlet property="serverURLLabel" destination="oT8-7z-Pb2" id="npu-uW-Ju4"/>
+                        <outlet property="secondWarningLabel" destination="1yS-SY-OUO" id="Oig-Qt-WyJ"/>
+                        <outlet property="serverURLLabel" destination="w28-lU-c36" id="iPS-g4-2ZC"/>
                         <outlet property="userNameLabel" destination="hQ2-xY-Uj2" id="ua6-fX-51p"/>
+                        <segue destination="FBq-G1-Fua" kind="push" identifier="AboutSegue" id="Ffj-sW-w3C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGc-Cn-dR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -245,7 +316,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Created by:">
                                         <attributes>
-                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                            <font key="NSFont" size="18" name="Helvetica-Bold"/>
                                             <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
                                                 <tabStops>
@@ -292,8 +363,30 @@ Cg
                                     <fragment>
                                         <string key="content">Benno Schilling
 Mike Feustel
-Markus Hinkelmann
-
+Markus Hinkelmann</string>
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547"/>
+                                                    <textTab alignment="left" location="56.650001525878906"/>
+                                                    <textTab alignment="left" location="85"/>
+                                                    <textTab alignment="left" location="113.34999847412109"/>
+                                                    <textTab alignment="left" location="141.69999694824219"/>
+                                                    <textTab alignment="left" location="170.05000305175781"/>
+                                                    <textTab alignment="left" location="198.39999389648438"/>
+                                                    <textTab alignment="left" location="226.75"/>
+                                                    <textTab alignment="left" location="255.10000610351562"/>
+                                                    <textTab alignment="left" location="283.45001220703125"/>
+                                                    <textTab alignment="left" location="311.79998779296875"/>
+                                                    <textTab alignment="left" location="340.14999389648438"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cgo
 </string>
                                         <attributes>
                                             <font key="NSFont" size="12" name="Helvetica"/>
@@ -317,7 +410,7 @@ Markus Hinkelmann
                                     </fragment>
                                     <fragment content="Contact us: ">
                                         <attributes>
-                                            <font key="NSFont" size="14" name="Helvetica-Bold"/>
+                                            <font key="NSFont" size="18" name="Helvetica-Bold"/>
                                             <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
                                                 <tabStops>
@@ -338,9 +431,53 @@ Markus Hinkelmann
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">
-info@BiCoRem.mhinkelmann.de
-
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547"/>
+                                                    <textTab alignment="left" location="56.650001525878906"/>
+                                                    <textTab alignment="left" location="85"/>
+                                                    <textTab alignment="left" location="113.34999847412109"/>
+                                                    <textTab alignment="left" location="141.69999694824219"/>
+                                                    <textTab alignment="left" location="170.05000305175781"/>
+                                                    <textTab alignment="left" location="198.39999389648438"/>
+                                                    <textTab alignment="left" location="226.75"/>
+                                                    <textTab alignment="left" location="255.10000610351562"/>
+                                                    <textTab alignment="left" location="283.45001220703125"/>
+                                                    <textTab alignment="left" location="311.79998779296875"/>
+                                                    <textTab alignment="left" location="340.14999389648438"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="info@BiCoRem.mhinkelmann.de">
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28.299999237060547"/>
+                                                    <textTab alignment="left" location="56.650001525878906"/>
+                                                    <textTab alignment="left" location="85"/>
+                                                    <textTab alignment="left" location="113.34999847412109"/>
+                                                    <textTab alignment="left" location="141.69999694824219"/>
+                                                    <textTab alignment="left" location="170.05000305175781"/>
+                                                    <textTab alignment="left" location="198.39999389648438"/>
+                                                    <textTab alignment="left" location="226.75"/>
+                                                    <textTab alignment="left" location="255.10000610351562"/>
+                                                    <textTab alignment="left" location="283.45001220703125"/>
+                                                    <textTab alignment="left" location="311.79998779296875"/>
+                                                    <textTab alignment="left" location="340.14999389648438"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cgo
 </string>
                                         <attributes>
                                             <font key="NSFont" size="12" name="Helvetica"/>
@@ -365,7 +502,7 @@ info@BiCoRem.mhinkelmann.de
                                     <fragment content="Icons provided by: ">
                                         <attributes>
                                             <color key="NSColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
                                                 <tabStops/>
                                             </paragraphStyle>
@@ -374,7 +511,7 @@ info@BiCoRem.mhinkelmann.de
                                     <fragment content="http://icons8.com">
                                         <attributes>
                                             <color key="NSColor" red="0.20392156862745098" green="0.43137254901960786" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <font key="NSFont" size="14" name="Helvetica"/>
                                             <url key="NSLink" string="http://icons8.com/"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
                                                 <tabStops/>
@@ -667,6 +804,6 @@ info@BiCoRem.mhinkelmann.de
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Lbf-gZ-Syh"/>
+        <segue reference="PNK-XA-uVV"/>
     </inferredMetricsTieBreakers>
 </document>

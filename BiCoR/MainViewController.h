@@ -21,6 +21,8 @@
 @property UILabel *statusLabel;
 @property bool statusLoadingData;
 @property NSInteger switchID;
+@property NSInteger firstWarningTime;
+@property NSInteger secondWarningTime;
 
 //Functions
 

@@ -59,9 +59,23 @@
     
     [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
     
-    //Get username and password
+    //Get first and second warning time
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
+    _firstWarningTime = [[userDefaults stringForKey:SETTINGS_FIRST_WARNING_TIME_KEY] integerValue];
+    _secondWarningTime = [[userDefaults stringForKey:SETTINGS_SECOND_WARNING_TIME_KEY] integerValue];
+    
+    if (_firstWarningTime <= 0) {
+        _firstWarningTime = 30;
+        [userDefaults setObject:[NSString stringWithFormat:@"%i", _firstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
+    }
+    if (_secondWarningTime <= 0)
+    {
+        _secondWarningTime = 5;
+        [userDefaults setObject:[NSString stringWithFormat:@"%i", _secondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
+    }
+    
+    //Get username and password
     NSString *userName = [userDefaults stringForKey:SETTINGS_USERNAME_KEY];
     NSString *password = [userDefaults stringForKey:SETTINGS_PASSWORD_KEY];
     
@@ -283,6 +297,7 @@
     {
         cell.backgroundColor = [UIColor colorWithRed:1.0 green:0.623529 blue:0.364706 alpha:1.0];
         cell.imageView.image = [UIImage imageNamed:@"BirthdayImage"];
+        cell.textLabel.textColor = [UIColor blackColor];
     }
     else
     {
@@ -292,10 +307,14 @@
         NSInteger currentValue = [[dateFormatterMonth stringFromDate:[[NSDate alloc] init] ] integerValue];
         NSInteger result = c.sortValue - currentValue;
         
-        if ((result < 5) && (result >0)) {
+        if ((result < _secondWarningTime) && (result >0)) {
             cell.textLabel.textColor = [UIColor redColor];
-        } else if((result < 30)  && (result >0)) {
+        } else if((result < _firstWarningTime)  && (result >0)) {
             cell.textLabel.textColor = [UIColor orangeColor];
+        }
+        else
+        {
+            cell.textLabel.textColor = [UIColor blackColor];
         }
     }
     

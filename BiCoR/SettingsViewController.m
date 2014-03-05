@@ -12,6 +12,9 @@
 NSString * const SETTINGS_USERNAME_KEY = @"USERNAME";
 NSString * const SETTINGS_PASSWORD_KEY = @"PASSWORD";
 NSString * const SETTINGS_URL_KEY = @"URL";
+NSString *const SETTINGS_FIRST_WARNING_TIME_KEY = @"FIRST_WARNING_TIME";
+NSString *const SETTINGS_SECOND_WARNING_TIME_KEY = @"SECOND_WARNING_TIME";
+
 
 @implementation SettingsViewController
 
@@ -21,9 +24,13 @@ NSString * const SETTINGS_URL_KEY = @"URL";
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    //Hide the toolbar
     
     //Fill the toolbar
     //////////////////
+    //About Buttons
+    UIBarButtonItem *aboutBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"About", nil) style:UIBarButtonItemStylePlain target:self action:@selector(aboutButtonClicked:)];
+    
     
     //Spacer
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
@@ -38,7 +45,7 @@ NSString * const SETTINGS_URL_KEY = @"URL";
     [_statusLabel sizeToFit];
     UIBarButtonItem *toolBarTitle = [[UIBarButtonItem alloc] initWithCustomView:_statusLabel];
     
-    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, nil] animated:NO];
+    [self setToolbarItems:[NSArray arrayWithObjects:spacer, toolBarTitle, spacer, aboutBtn, nil] animated:NO];
     
 }
 
@@ -66,6 +73,8 @@ NSString * const SETTINGS_URL_KEY = @"URL";
     _userNameLabel.text = _oldUserName;
     _passwordLabel.text = _oldPassword;
     _serverURLLabel.text = _oldURL;
+    _firstWarningLabel.text = [userDefaults stringForKey:SETTINGS_FIRST_WARNING_TIME_KEY];
+    _secondWarningLabel.text = [userDefaults stringForKey:SETTINGS_SECOND_WARNING_TIME_KEY];
 }
 
 /**
@@ -88,9 +97,8 @@ NSString * const SETTINGS_URL_KEY = @"URL";
     connection.password = _oldPassword;
     connection.url = _oldURL;
     
-    //TODO: Add function to realod the data
-    
     [self.navigationController popViewControllerAnimated:YES];
+    self.navigationController.toolbarHidden = NO;
 }
 
 /**
@@ -103,6 +111,34 @@ NSString * const SETTINGS_URL_KEY = @"URL";
     [self.view endEditing:YES];
     
     //Check if the entered Values are valid
+    
+    //Check the Warning Times
+    NSInteger newFirstWarningTime = [_firstWarningLabel.text integerValue];
+    NSInteger newSecondWarningTime = [_secondWarningLabel.text integerValue];
+    
+    if (newFirstWarningTime <= 0) {
+        _firstWarningLabel.layer.borderWidth = 1.0f;
+        _firstWarningLabel.layer.borderColor = [[UIColor redColor] CGColor];
+        return;
+    }
+    else if ((newSecondWarningTime <= 0) || (newSecondWarningTime >= newFirstWarningTime))
+    {
+        _secondWarningLabel.layer.borderWidth = 1.0f;
+        _secondWarningLabel.layer.borderColor = [[UIColor redColor] CGColor];
+        return;
+    }
+    else
+    {
+        _firstWarningLabel.layer.borderWidth = 0.0f;
+        _secondWarningLabel.layer.borderWidth = 0.0f;
+        
+        //Set the user defaults
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:[NSString stringWithFormat:@"%d", newFirstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
+        [userDefaults setObject:[NSString stringWithFormat:@"%d", newSecondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
+    }
+    
+    //Check the connection
     ServerConnection *connection = [ServerConnection sharedServerConnection];
     
     //Enter the new values
@@ -113,6 +149,17 @@ NSString * const SETTINGS_URL_KEY = @"URL";
     //Start testing the login process
     [self setStatusForLoadingData:YES];
     [connection performBackgroundLoginProcessWithDelegate:self];
+    self.navigationController.toolbarHidden = NO;
+}
+    
+/**
+ Function called, when the about button is clicked
+ @param sender: The sender, which calls the event
+ */
+    
+- (void)aboutButtonClicked:(id)sender
+{
+    [self performSegueWithIdentifier:@"AboutSegue" sender:self];
 }
 
 /**
