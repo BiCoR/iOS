@@ -67,12 +67,12 @@
     
     if (_firstWarningTime <= 0) {
         _firstWarningTime = 30;
-        [userDefaults setObject:[NSString stringWithFormat:@"%i", _firstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
+        [userDefaults setObject:[NSString stringWithFormat:@"%li", (long)_firstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
     }
     if (_secondWarningTime <= 0)
     {
         _secondWarningTime = 5;
-        [userDefaults setObject:[NSString stringWithFormat:@"%i", _secondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
+        [userDefaults setObject:[NSString stringWithFormat:@"%li", (long)_secondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
     }
     
     //Get username and password

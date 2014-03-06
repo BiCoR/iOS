@@ -134,8 +134,8 @@ NSString *const SETTINGS_SECOND_WARNING_TIME_KEY = @"SECOND_WARNING_TIME";
         
         //Set the user defaults
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:[NSString stringWithFormat:@"%d", newFirstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
-        [userDefaults setObject:[NSString stringWithFormat:@"%d", newSecondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
+        [userDefaults setObject:[NSString stringWithFormat:@"%ld", (long)newFirstWarningTime] forKey:SETTINGS_FIRST_WARNING_TIME_KEY];
+        [userDefaults setObject:[NSString stringWithFormat:@"%ld", (long)newSecondWarningTime] forKey:SETTINGS_SECOND_WARNING_TIME_KEY];
     }
     
     //Check the connection
