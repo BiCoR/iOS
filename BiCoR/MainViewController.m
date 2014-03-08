@@ -82,7 +82,7 @@
     //Check if userName / Password allready exists
     if ((userName == nil) || (password == nil)) {
         [self setStatusForLoadingData:YES];
-        UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE", @"title for login credentials") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:nil, nil];
+        UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE", @"title for login credentials") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_REGISTER", @"Register Button"), nil];
         dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
         [dataAlert show];
     }
@@ -195,6 +195,11 @@
         [userDefaults setObject:[alertView textFieldAtIndex:1].text forKey:SETTINGS_PASSWORD_KEY];
         [self loadDataFirstTime];
     }
+    else if ((buttonIndex == 1) && (alertView.tag == 0))
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://quiet-crag-9089.herokuapp.com/sign_up"]];
+        [self setStatusForLoadingData:NO];
+    }
 }
 
 /////////////////////////////////////////
@@ -222,7 +227,7 @@
  */
 - (void)serverConnectionFailedDuringLogin:(ServerConnection *)serverConnectionObject
 {
-    UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE_FAILED", @"title for login credentials failed") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:nil, nil];
+    UIAlertView *dataAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TITLE", @"title for login credentials") message:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_TEXT", @"text for login credentials") delegate:self cancelButtonTitle:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_OK", @"ok button") otherButtonTitles:NSLocalizedString(@"ENTER_LOGIN_CREDENTIALS_REGISTER", @"Register Button"), nil];
     dataAlert.alertViewStyle = UIAlertViewStyleLoginAndPasswordInput;
     dataAlert.tag = 0;
     [dataAlert show];

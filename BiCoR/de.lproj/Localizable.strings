@@ -77,3 +77,6 @@ Bitte wende dich an den Support wen der Fehler weiterhin besteht.";
 
 /* About Button */
 "About" = "Über";
+
+/*Register Button */
+"ENTER_LOGIN_CREDENTIALS_REGISTER" = "Registrieren";
