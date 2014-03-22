@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FRQ-iH-Uz0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FRQ-iH-Uz0">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Main View Controller - BiCoRem-->
@@ -76,7 +76,7 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <gestureRecognizers/>
                         <sections>
-                            <tableViewSection headerTitle="Mark users before Birthday (days)" id="s7b-VV-dIM">
+                            <tableViewSection headerTitle="Mark Contact before Birthday (days)" id="s7b-VV-dIM">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iJQ-aA-v30">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>
@@ -295,7 +295,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="926" y="719"/>
+            <point key="canvasLocation" x="926" y="405"/>
         </scene>
         <!--View Controller - About-->
         <scene sceneID="Sue-pP-URy">
@@ -529,7 +529,7 @@ Cgo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c4K-tJ-ngI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1376" y="719"/>
+            <point key="canvasLocation" x="1820" y="405"/>
         </scene>
         <!--Web View Controller - Edit Persons-->
         <scene sceneID="3lc-p2-W49">
@@ -575,7 +575,7 @@ Cgo
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iID-CN-SPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1461" y="41"/>
+            <point key="canvasLocation" x="1460" y="41"/>
         </scene>
         <!--Person Details View Controller - Person Details-->
         <scene sceneID="VmO-oE-4vV">
@@ -614,8 +614,8 @@ Cgo
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="imageView" destination="rDn-kL-l04" id="XVB-Yd-oL0"/>
-                                    <outlet property="textLabel" destination="WIY-XN-kIB" id="q9w-st-T4h"/>
+                                    <outlet property="contactImageView" destination="rDn-kL-l04" id="zZr-dC-sas"/>
+                                    <outlet property="nameLabel" destination="WIY-XN-kIB" id="R0q-fi-tYb"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DataCell" id="hUH-Co-tKk" customClass="DataCell">
@@ -772,7 +772,7 @@ Cgo
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3E-BL-JsM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="-535"/>
+            <point key="canvasLocation" x="926" y="-319"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RQa-g8-LSg">
@@ -804,6 +804,6 @@ Cgo
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="PNK-XA-uVV"/>
+        <segue reference="Lbf-gZ-Syh"/>
     </inferredMetricsTieBreakers>
 </document>

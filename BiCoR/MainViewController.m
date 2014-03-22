@@ -214,10 +214,11 @@
     [_model removeAllObjects];
     for (Contact *person in resultObjects[1]) {
         [_model addObject:person];
-        [self.tableView reloadData];
     }
     
     [_model sort];
+    
+    [self.tableView reloadData];
     
     [self setStatusForLoadingData:NO];
 }
@@ -306,15 +307,18 @@
     }
     else
     {
-        NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
-        dateFormatterMonth.dateFormat =  @"MMdd";
-        dateFormatterMonth.timeZone = [NSTimeZone localTimeZone];
-        NSInteger currentValue = [[dateFormatterMonth stringFromDate:[[NSDate alloc] init] ] integerValue];
-        NSInteger result = c.sortValue - currentValue;
+        //Reset birthday values
+        cell.imageView.image = nil;
+        cell.backgroundColor = [UIColor whiteColor];
         
-        if ((result < _secondWarningTime) && (result >0)) {
+        //Get the components of the current date
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        NSDateComponents *daysToBirthday = [calendar components:(NSDayCalendarUnit) fromDate:[[NSDate alloc] init] toDate:c.nextBirthday options:0];
+        
+        if (((daysToBirthday.day + 1) < _secondWarningTime)) {
             cell.textLabel.textColor = [UIColor redColor];
-        } else if((result < _firstWarningTime)  && (result >0)) {
+        } else if((daysToBirthday.day + 1 < _firstWarningTime)) {
             cell.textLabel.textColor = [UIColor orangeColor];
         }
         else

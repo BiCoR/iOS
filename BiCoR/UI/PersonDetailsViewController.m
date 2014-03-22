@@ -155,7 +155,7 @@
 {
     HeaderCell* headerCell = [tableView dequeueReusableCellWithIdentifier:@"HeaderCell"];
     
-    headerCell.textLabel.text = _contactData.getFullName;
+    headerCell.nameLabel.text = _contactData.getFullName;
     if (_contactData.hasBirthday) {
         headerCell.backgroundColor = [UIColor colorWithRed:1.0 green:0.623529 blue:0.364706 alpha:1.0];
     }
