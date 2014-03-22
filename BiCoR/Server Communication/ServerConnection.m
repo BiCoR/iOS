@@ -337,7 +337,7 @@ int const SERVER_CONNECTION_UNKNOWN_ERROR_CODE = 3;
             
             [requestData addValue:_authentificationToken forHTTPHeaderField:SERVER_CONNECTION_TOKEN_KEY_HEADER];
             
-            returnedData = [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&error];
+            [NSURLConnection sendSynchronousRequest:requestData returningResponse:&response error:&error];
             
             //Try to login
             

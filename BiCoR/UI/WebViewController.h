@@ -20,7 +20,7 @@ extern int const WEB_VIEW_CONTROLLER_EDIT_USER;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @property int actionType;
-@property int userId;
+@property NSInteger userId;
 @property int loadCounter;
 
 @end

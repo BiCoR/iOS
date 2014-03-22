@@ -63,7 +63,7 @@
             notification.applicationIconBadgeNumber = 1;
             notification.alertAction = nil;
             notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"%@ has birthday today", nil), [c getFullName]];
-            notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:c.ID] forKey:@"USERID"];
+            notification.userInfo = [NSDictionary dictionaryWithObject:[NSNumber numberWithLong:c.ID] forKey:@"USERID"];
             
             [[UIApplication sharedApplication] scheduleLocalNotification:notification];
         }
