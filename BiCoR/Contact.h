@@ -20,7 +20,7 @@
 @property NSString *phoneLandline;
 @property NSString *phoneMobile;
 @property UIImage *picture;
-@property int ID;
+@property NSInteger ID;
 @property (readonly) NSInteger sortValue;
 @property (readonly) bool hasBirthday;
 @property (readonly) NSDate *nextBirthday;
